@@ -1,0 +1,44 @@
+.addService mat-label{
+  text-transform: capitalize;
+}
+form.addService {
+  padding: 0px 30px 30px;
+}
+.heading
+{
+  font-size: 20px;
+  margin-left: 15px;
+  color: #222222;
+  border-bottom: 1px solid #222222;
+}
+.heading_small
+{
+  font-size: 19px;
+  padding: 15px;
+  color: #444444;
+}
+.remarks
+{
+  color: red;
+  font-size: 13px;
+  padding: 12px;
+}
+
+.card-title{
+  color: #000000;
+  margin-bottom: 0px !important;
+}
+.tableheader{
+  border-bottom: 2px solid #666666;
+}
+.sub-ttl{
+  font-size: 20px;
+}
+.remove-object {
+  position: absolute;
+  right: -15px;
+  top: 10px;
+}
+.m-t-20{
+  margin-top: 20px;
+}

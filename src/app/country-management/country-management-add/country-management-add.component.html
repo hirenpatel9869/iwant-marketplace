@@ -1,0 +1,86 @@
+
+<section>
+    <div class="card">
+        <h4 class="card-title f-22" style="font-weight: normal; padding:15px;">Country Add</h4>
+        <div class="col-md-12" style="margin-bottom: 30px;">
+        </div>
+
+        <form class="addService" (ngSubmit)="createCountry()" #addServiceForm="ngForm" >
+
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Country Name</mat-label>
+                        <input matInput placeholder="Enter Country Name" name="name"
+                               [(ngModel)]="countryModel.name"
+                               required>
+                    </mat-form-field>
+                </div>
+            </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field class="full-width-no-margin">
+                            <mat-select name="companymobileTimeZone" placeholder="Enter Country TimeZone" required [(ngModel)]="countryModel.timezoneId">
+                                <mat-option *ngFor="let time of timeData " [value]="time">
+                                    {{time}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field class="full-width-no-margin">
+                        <mat-select name="companymobileLanguage" placeholder="Enter Country Language" required [(ngModel)]="countryModel.localeId">
+                            <mat-option *ngFor="let lang of language " [value]="lang">
+                                {{lang}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Country Mobile Code</mat-label>
+                        <input matInput placeholder="Enter Country Mobile Code" name="mcc"
+                               [(ngModel)]="countryModel.mcc"
+                               required>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>ISO-Code</mat-label>
+                        <input matInput placeholder="Enter Country ISO-Code" name="isoCode"
+                               [(ngModel)]="countryModel.isoCode"
+                               required>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="saveBtnMain">
+                <button class="btn actionBtnStyle"
+                        matTooltip="Save" type="submit"
+                        placement="top"
+                        id="assetSave"
+                        [disabled]="!addServiceForm.form.valid">
+                    <i class="fa fa-check"></i></button>
+            </div>
+
+            <div class="backBtnMain">
+                <button (click)="goBack()" class="btn actionBtnStyle"
+                        matTooltip="Back" type="button"
+                        placement="top">
+                    <i class="fa fa-chevron-left"></i></button>
+            </div>
+
+        </form>
+
+    </div>
+</section>

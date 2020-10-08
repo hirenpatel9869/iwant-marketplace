@@ -1,0 +1,94 @@
+.addCertificationTest mat-label{
+  text-transform: capitalize;
+}
+form.addCertificationTest {
+  padding: 0px 30px 30px;
+}
+.heading
+{
+  font-size: 20px;
+  margin-left: 15px;
+  color: #222222;
+  border-bottom: 1px solid #222222;
+}
+.heading_small
+{
+  font-size: 19px;
+  padding: 15px;
+  color: #444444;
+}
+.remarks
+{
+  color: red;
+  font-size: 13px;
+  padding: 12px;
+}
+.tableheader{
+  border-bottom: 2px solid #666666;
+}
+.sub-ttl{
+  font-size: 20px;
+}
+.multiSelect {
+  margin-top: 27px !important;
+}
+.m-t-33{
+  margin-top: 33px;
+}
+.m-t-12{
+  margin-top: 12px;
+}
+.m-t-20{margin-top: 20px}
+.mcqListMain{
+  position: relative;
+  width: 100%;
+  float: left;
+  background-color: #e6e6e6;
+  padding: 15px;
+  border-radius: 5px;
+  outline: none;
+  border: solid 1px #cecece;
+}
+.addMcq{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 9;
+  cursor: pointer;
+  font-size: 15px;
+  color: #c01d58;
+}
+.mcqListTitle{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 14px;
+  color: #000000;
+  font-weight: 500;
+}
+.panelHead{
+  position: relative;
+}
+.panelHead .close-btn{
+  position: absolute;
+  right: 10px;
+  top: 15px;
+}
+
+.remove-object {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.email-error {
+  color: #ff0600;
+  width: 100%;
+  float: left;
+  position: relative;
+  bottom: 15px;
+  padding: 0;
+}
+
+
+

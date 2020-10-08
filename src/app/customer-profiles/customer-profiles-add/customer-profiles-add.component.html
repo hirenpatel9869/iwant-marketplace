@@ -1,0 +1,343 @@
+<section>
+  <div class="card">
+    <h4 class="card-title">Add Customer Profiles</h4>
+
+    <form class="addCertificationTest" (ngSubmit)="createCustomerProfile()" #addCertificationTestForm="ngForm">
+      <div class="row">
+        <div class="col-12">
+          <mat-accordion>
+            <mat-expansion-panel class="expansion-panel" [expanded]="pannel1">
+              <mat-expansion-panel-header  class="mat-accordion-header" [collapsedHeight]="'110px'" [expandedHeight]="'110px'">
+                <mat-panel-title>
+                  Basic Information
+                </mat-panel-title>
+                <div class="panel-sub-header">
+                  <p>Name, Description</p>
+                </div>
+              </mat-expansion-panel-header>
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <mat-form-field class="full-width">
+                    <mat-label>First Name</mat-label>
+                    <input matInput  autocomplete="firstName" placeholder="Enter First Name..." name="firstName" required
+                           [(ngModel)]="CustomerProfileModal.requestBody.firstName">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <mat-form-field class="full-width full-width-no-margin">
+                    <mat-label>Last Name</mat-label>
+                    <input type="text" matInput autocomplete="lastName" placeholder="Enter Last Name..." name="lastName"
+                           [(ngModel)]="CustomerProfileModal.requestBody.lastName">
+                  </mat-form-field>
+                </div>
+
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <mat-form-field class="full-width-no-margin">
+                    <mat-label>User Name</mat-label>
+                    <input type="text" matInput autocomplete="username" placeholder="Enter User Name..." name="username"
+                           [(ngModel)]="CustomerProfileModal.requestBody.username">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <mat-form-field class="full-width-no-margin">
+                    <mat-label>Mobile Number</mat-label>
+                    <input type="number" matInput autocomplete="mobilenumber" placeholder="Enter mobile number..." name="mobilenumber"
+                           [(ngModel)]="CustomerProfileModal.requestBody.mobile" required>
+                  </mat-form-field>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <mat-form-field class="full-width-no-margin">
+                    <mat-label>Password</mat-label>
+
+                    <input type="password" matInput autocomplete="password" placeholder="Enter your password..." name="password"
+                           [(ngModel)]="CustomerProfileModal.requestBody.password" required>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Gender</mat-label>
+                    <mat-select name="gender" [(ngModel)]="CustomerProfileModal.requestBody.gender">
+                      <mat-option value="Male">Male</mat-option>
+                      <mat-option value="Female">Female</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <mat-form-field class="full-width-no-margin">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Enter Email..." id="emailaddress"
+                           name="email"
+                           pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                           #email="ngModel"
+                           autocomplete='email' name="email" required
+                           [(ngModel)]="CustomerProfileModal.requestBody.email">
+                  </mat-form-field>
+
+                  <div [hidden]="email.valid || email.pristine"
+                       class="alert email-error">
+                    <div [hidden]="!email.hasError('required')">Email is required</div>
+                    <div [hidden]="!email.hasError('pattern')">Email Format Should Be
+                      <small><b>joe@abc.com</b></small>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <mat-form-field class="full-width-no-margin">
+                    <mat-label> User Type </mat-label>
+                    <mat-select name="userType" [(ngModel)]="CustomerProfileModal.requestBody.userType">
+                      <mat-option value="-1">System Admin</mat-option>
+                      <mat-option value="0">Customer</mat-option>
+                      <mat-option value="1">Staff</mat-option>
+                      <mat-option value="2">Merchant</mat-option>
+                      <mat-option value="3">Partner</mat-option>
+                      <mat-option value="4">Other</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <mat-form-field class="full-width-no-margin">
+                    <mat-label>Institute</mat-label>
+                    <input type="text" matInput autocomplete="institute" placeholder="Enter your institute..." name="institute"
+                           [(ngModel)]="CustomerProfileModal.requestBody.institute">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <mat-form-field class="full-width-no-margin">
+                    <mat-label>course</mat-label>
+                    <input type="text" matInput autocomplete="course" placeholder="Enter your course..." name="course"
+                           [(ngModel)]="CustomerProfileModal.requestBody.course">
+                  </mat-form-field>
+                </div>
+
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>City</mat-label>
+                    <mat-select  placeholder="Select City" name="selectcity"
+                                 [(ngModel)]="selectedCity">
+                      <mat-option *ngFor="let city of allCity" [value]="city.id">
+                        {{city.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <!-- <div class="col-md-6 col-sm-6 col-xs-12">
+                     <select class="abDropdown" [(ngModel)]="CustomerProfileModal.requestBody.city"
+                             placeholder="Select City" name="cityDropDown">
+                         <option *ngFor="let city of allCity" [value]="city.id">
+                             {{city.name}}
+                         </option>
+                     </select>
+                 </div>-->
+
+              </div>
+
+
+
+
+
+              <!-- <div class="row m-t-30">
+                   <div class="col-12">
+                       <mat-label>Description</mat-label>
+                       <ck-editor name="question" [(ngModel)]="certificationTestModal.body.description" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor>
+                   </div>
+               </div>-->
+
+            </mat-expansion-panel>
+          </mat-accordion>
+
+
+          <!--<mat-accordion>
+              <mat-expansion-panel class="expansion-panel" [expanded]="pannel2">
+                  <mat-expansion-panel-header  class="mat-accordion-header" [collapsedHeight]="'110px'" [expandedHeight]="'110px'">
+                      <mat-panel-title>
+                          Test Level
+                      </mat-panel-title>
+                      <div class="panel-sub-header">
+                          <p>Levels</p>
+                      </div>
+                  </mat-expansion-panel-header>
+                  <div class="row m-t-15">
+                      <ng-container>
+                          <div class="col-12">
+                              <div class="panel panel-default">
+                                  <div class="panel-heading" style="font-size: 14px;position: relative"> Test Level
+                                      <div class="remove-object">
+                                          <button type="button" class="btn close-btn">
+                                              <i class="zmdi zmdi-close"></i>
+                                          </button>
+                                      </div>
+                                  </div>
+                                  <div class="panel-body">
+
+                                      <div class="row">
+                                          <div class="col-md-6 col-sm-6 col-xs-12">
+                                              <mat-form-field class="example-full-width f-16">
+                                                  <mat-select name="addressType" placeholder="Address Type" [(ngModel)]="CustomerProfileModal.requestBody.address.addressType" required>
+                                                      <mat-option value="home"> home </mat-option>
+                                                      <mat-option value="office"> office</mat-option>
+                                                  </mat-select>
+                                              </mat-form-field>
+                                          </div>
+
+                                          <div class="col-md-6 col-sm-6 col-xs-12">
+                                              <mat-form-field class="full-width-no-margin">
+                                                  <mat-label>Block Number</mat-label>
+                                                  <input type="number" matInput autocomplete="blockNumber" placeholder="Enter your Block Number..." name="blockNumber"
+                                                         [(ngModel)]="CustomerProfileModal.requestBody.address.blockNumber">
+                                              </mat-form-field>
+                                          </div>
+
+                                      </div>
+
+
+                                      <div class="row">
+                                          <div class="col-md-6 col-sm-6 col-xs-12">
+                                              <mat-form-field class="full-width-no-margin">
+                                                  <mat-label>Building Name</mat-label>
+                                                  <input type="text" matInput autocomplete="buildingName" placeholder="Enter your Building Name..." name="buildingName"
+                                                         [(ngModel)]="CustomerProfileModal.requestBody.address.buildingName">
+                                              </mat-form-field>
+                                          </div>
+
+                                          <div class="col-md-6 col-sm-6 col-xs-12">
+                                              <mat-form-field class="full-width-no-margin">
+                                                  <mat-label>Society Name</mat-label>
+                                                  <input type="text" matInput autocomplete="societyName" placeholder="Enter your Society Name..." name="societyName"
+                                                         [(ngModel)]="CustomerProfileModal.requestBody.address.societyName">
+                                              </mat-form-field>
+                                          </div>
+
+                                      </div>
+
+                                      <div class="row">
+                                          <div class="col-md-6 col-sm-6 col-xs-12">
+                                              <mat-form-field class="full-width-no-margin">
+                                                  <mat-label>Street Name</mat-label>
+                                                  <input type="text" matInput autocomplete="streetName" placeholder="Enter your Street Name..." name="streetName"
+                                                         [(ngModel)]="CustomerProfileModal.requestBody.address.streetName">
+                                              </mat-form-field>
+                                          </div>
+
+                                          <div class="col-md-6 col-sm-6 col-xs-12">
+                                              <mat-form-field class="full-width-no-margin">
+                                                  <mat-label>Road Name</mat-label>
+                                                  <input type="text" matInput autocomplete="roadName" placeholder="Enter your Road Name..." name="roadName"
+                                                         [(ngModel)]="CustomerProfileModal.requestBody.address.roadName">
+                                              </mat-form-field>
+                                          </div>
+
+                                      </div>
+
+                                      <div class="row">
+                                          <div class="col-md-6 col-sm-6 col-xs-12">
+                                              <mat-form-field class="example-full-width f-16">
+                                                  <mat-label>landmark</mat-label>
+                                                  <input matInput name="landmark" placeholder="landmark"
+                                                         [(ngModel)]="CustomerProfileModal.requestBody.address.landmark">
+                                              </mat-form-field>
+                                          </div>
+
+                                          <div class="col-md-6 col-sm-6 col-xs-12">
+                                              <mat-form-field class="full-width-no-margin">
+                                                  <mat-label>zipcode</mat-label>
+                                                  <input type="text" matInput autocomplete="zipcode" placeholder="Enter your zipcode..." name="zipcode"
+                                                         [(ngModel)]="CustomerProfileModal.requestBody.address.zipcode">
+                                              </mat-form-field>
+                                          </div>
+
+                                      </div>
+
+                                      <div class="row">
+                                          <div class="col-md-6 col-sm-6 col-xs-12">
+                                              <mat-form-field class="full-width-no-margin">
+                                                  <mat-label>Country Name</mat-label>
+                                                  <input type="text" matInput autocomplete="name" placeholder="Enter your Country Name..." name="name"
+                                                         [(ngModel)]="CustomerProfileModal.requestBody.address.country.name">
+                                              </mat-form-field>
+                                          </div>
+
+                                          <div class="col-md-6 col-sm-6 col-xs-12">
+                                              <mat-form-field class="full-width-no-margin">
+                                                  <mat-label>State Name</mat-label>
+                                                  <input type="text" matInput autocomplete="name" placeholder="Enter your State Name..." name="name"
+                                                         [(ngModel)]="CustomerProfileModal.requestBody.address.state.name">
+                                              </mat-form-field>
+                                          </div>
+
+                                      </div>
+
+
+                                      <div class="row">
+                                          <div class="col-md-6 col-sm-6 col-xs-12">
+                                              <mat-form-field class="full-width-no-margin">
+                                                  <mat-label>city Name</mat-label>
+                                                  <input type="text" matInput autocomplete="name" placeholder="Enter your city Name..." name="name"
+                                                         [(ngModel)]="CustomerProfileModal.requestBody.address.city.name">
+                                              </mat-form-field>
+                                          </div>
+                                      </div>
+
+
+                                  </div>
+                              </div>
+                          </div>
+                      </ng-container>
+
+                  </div>
+
+              </mat-expansion-panel>
+          </mat-accordion>-->
+
+
+        </div>
+      </div>
+
+      <div class="saveBtnMain">
+        <button class="btn actionBtnStyle"
+                matTooltip="Save" type="submit"
+                placement="top"
+                id="assetSave"
+                [disabled]="!addCertificationTestForm.form.valid">
+          <i class="fa fa-check"></i></button>
+      </div>
+      <div class="backBtnMain">
+        <button (click)="goBack()" class="btn actionBtnStyle"
+                matTooltip="Back" type="button"
+                placement="top">
+          <i class="fa fa-chevron-left"></i></button>
+      </div>
+    </form>
+
+  </div>
+</section>
+<div class="spinner_div" style="width: 100%" *ngIf="spinner">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>

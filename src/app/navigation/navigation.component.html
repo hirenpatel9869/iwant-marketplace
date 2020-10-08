@@ -1,0 +1,188 @@
+<style>
+  .navigation__active a{
+    background-color: #c01d58;
+    color: #fff !important;
+  }
+</style>
+<aside class="sidebar" [class.toggled]="sidebarVisible" >
+
+
+  <perfect-scrollbar>
+         <ul   class="navigation">
+           <li  routerLinkActive="navigation__active"><a [routerLink]="['/dashboard']" (click)="toggleSidebarVisibility()"><i class="zmdi zmdi-view-dashboard"></i> Dashboard</a></li>
+           <li routerLinkActive="navigation__active"><a [routerLink]="['/store/list']" (click)="toggleSidebarVisibility()"><i class="zmdi zmdi-store"></i> Store</a></li>
+           <li routerLinkActive="navigation__active"><a [routerLink]="['/customer-profiles/list']" (click)="toggleSidebarVisibility()"><i class="zmdi zmdi-account-circle"></i> Customer Profiles</a></li>
+          <!-- <li routerLinkActive="navigation__active"><a [routerLink]="['/country-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> Country Management</a></li>
+           <li routerLinkActive="navigation__active"><a [routerLink]="['/state-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> State Management</a></li>
+           <li routerLinkActive="navigation__active"><a [routerLink]="['/city-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> City Management</a></li>
+-->
+
+           <li routerLinkActive="navigation__sub--active" class="navigation__sub">
+             <a angulartics2On="click"  (click)="toggleNavigationSub('country_management', $event)"><i class="zmdi zmdi-view-list"></i> Basic Modules <i class="zmdi zmdi-caret-down" style="float: right;"></i></a>
+             <ul [@toggleHeight]="navigationSubState.country_management">
+               <li routerLinkActive="navigation__active"><a [routerLink]="['/country-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> Country Management</a></li>
+               <li routerLinkActive="navigation__active"><a [routerLink]="['/state-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> State Management</a></li>
+               <li routerLinkActive="navigation__active"><a [routerLink]="['/city-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> City Management</a></li>
+             </ul>
+           </li>
+
+           <!-- <li  routerLinkActive="navigation__active"><a [routerLink]="['/dashboard']" (click)="toggleSidebarVisibility()"><i class="zmdi zmdi-view-dashboard"></i> Dashboard</a></li>
+
+             <li routerLinkActive="navigation__sub&#45;&#45;active" class="navigation__sub">
+                 <a angulartics2On="click"  (click)="toggleNavigationSub('Master', $event)"><i class="zmdi zmdi-view-list"></i> Master <i class="zmdi zmdi-caret-down" style="float: right;"></i></a>
+                 <ul [@toggleHeight]="navigationSubState.Master">
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/category-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> Category Management</a></li>
+                     <li  routerLinkActive="navigation__active"><a [routerLink]="['/media/view']" (click)="toggleSidebarVisibility()"><i class="zmdi zmdi-collection-video"></i> Media Manager </a></li>
+                     <li  routerLinkActive="navigation__active"><a [routerLink]="['/data-filter']" (click)="toggleSidebarVisibility()"><i class="fa fa-filter"></i> Data Filter </a></li>
+                 </ul>
+             </li>
+
+          &lt;!&ndash; <li  routerLinkActive="navigation__sub&#45;&#45;active" class="navigation__sub">
+             <a angulartics2On="click"  (click)="toggleNavigationSub('SamplePages', $event)"><i class="icofont">settings_alt</i> System Administration <i class="zmdi zmdi-caret-down" style="float: right;"></i>
+             </a>
+
+             <ul [@toggleHeight]="navigationSubState.SamplePages">
+               <li  routerLinkActive="navigation__active"><a [routerLink]="['/user-management']" (click)="toggleSidebarVisibility()"><i class="fa fa-users" aria-hidden="true"></i>  User Management</a></li>
+
+
+             </ul>
+           </li>&ndash;&gt;
+
+
+             <li routerLinkActive="navigation__sub&#45;&#45;active" class="navigation__sub">
+                 <a angulartics2On="click"  (click)="toggleNavigationSub('Assets', $event)"><i class="zmdi zmdi-view-list"></i> Assets Management <i class="zmdi zmdi-caret-down" style="float: right;"></i></a>
+                 <ul [@toggleHeight]="navigationSubState.Assets">
+
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/content-inventory-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-lunch"></i> Video Stream Inventory</a></li>
+                 </ul>
+             </li>
+
+             <li routerLinkActive="navigation__sub&#45;&#45;active" class="navigation__sub">
+                 <a angulartics2On="click"  (click)="toggleNavigationSub('Tables', $event)"><i class="zmdi zmdi-view-list"></i> Content Management <i class="zmdi zmdi-caret-down" style="float: right;"></i></a>
+                 <ul [@toggleHeight]="navigationSubState.Tables">
+                     &lt;!&ndash;<li routerLinkActive="navigation__active"><a [routerLink]="['/video-items-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> Video Item Management<span class="smallText"> (Topic)</span></a></li>&ndash;&gt;
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/video-content-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> Lessons & Videos&lt;!&ndash;<span class="smallText"> (Topic)</span>&ndash;&gt;</a></li>
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/playlist-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i>Chapters Management&lt;!&ndash;<span class="smallText"> (Chapter)</span>&ndash;&gt;</a></li>
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/channel-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-lunch"></i> Subjects Management&lt;!&ndash;<span class="smallText"> (Subject)</span>&ndash;&gt;</a></li>
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/bouquet-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-lunch"></i> Courses Management&lt;!&ndash;<span class="smallText"> (Course)</span>&ndash;&gt;</a></li>
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/live-classrooms']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-lunch"></i> Live Classrooms&lt;!&ndash;<span class="smallText"> (Course)</span>&ndash;&gt;</a></li>
+
+                 </ul>
+             </li>
+
+
+             <li routerLinkActive="navigation__sub&#45;&#45;active" class="navigation__sub">
+                 <a angulartics2On="click"  (click)="toggleNavigationSub('Product_Management', $event)"><i class="zmdi zmdi-view-list"></i> Product Management <i class="zmdi zmdi-caret-down" style="float: right;"></i></a>
+                 <ul [@toggleHeight]="navigationSubState.Product_Management">
+                     <li  routerLinkActive="navigation__active"><a [routerLink]="['/subscription-plan-management/']" (click)="toggleSidebarVisibility()">
+                         &lt;!&ndash;<i class="zmdi zmdi-card-giftcard"></i>&ndash;&gt;
+                         Subscription Plans</a></li>
+                 </ul>
+             </li>
+
+             <li  routerLinkActive="navigation__active"><a [routerLink]="['/collection']" (click)="toggleSidebarVisibility()">
+                 <i class="zmdi zmdi-view-list"></i>
+                Collection</a></li>
+
+             <li  routerLinkActive="navigation__sub&#45;&#45;active" class="navigation__sub">
+                 <a angulartics2On="click"  (click)="toggleNavigationSub('Teacher_Catalog', $event)"><i class="zmdi zmdi-view-list"></i>Teacher’s Catalogue<i class="zmdi zmdi-caret-down" style="float: right;"></i></a>
+                 <ul [@toggleHeight]="navigationSubState.Teacher_Catalog">
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/teacher-catalogue']" (click)="toggleSidebarVisibility()">Teacher’s Catalogue</a></li>
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/ratings']" (click)="toggleSidebarVisibility()">Rating & Reviews</a></li>
+                 </ul>
+             </li>
+
+
+             <li routerLinkActive="navigation__sub&#45;&#45;active" class="navigation__sub">
+                 <a angulartics2On="click"  (click)="toggleNavigationSub('Orders_Management', $event)"><i class="zmdi zmdi-view-list"></i> Orders Management <i class="zmdi zmdi-caret-down" style="float: right;"></i></a>
+                 <ul [@toggleHeight]="navigationSubState.Orders_Management">
+                     <li  routerLinkActive="navigation__active"><a [routerLink]="['/subscription-orders']" (click)="toggleSidebarVisibility()"> Subscription Orders</a></li>
+                     <li  routerLinkActive="navigation__active"><a [routerLink]="['/teacherbooking-orders']" (click)="toggleSidebarVisibility()"> Teacher Bookings</a></li>
+                     <li  routerLinkActive="navigation__active"><a [routerLink]="['/gift-vouchers']" (click)="toggleSidebarVisibility()"> Gift Vouchers</a></li>
+                 </ul>
+             </li>
+
+
+
+           &lt;!&ndash;*jhiHasAnyAuthority="['IWANT_ADMIN', 'MARKETPLACE_ADMIN']"&ndash;&gt;
+           <li *ngIf="showAuthority"  routerLinkActive="navigation__sub&#45;&#45;active" class="navigation__sub">
+             <a angulartics2On="click"  (click)="toggleNavigationPermissions('UserInterface', $event)"><i class="zmdi zmdi-settings"></i> Access Rights <i class="zmdi zmdi-caret-down" style="float: right;"></i>
+             </a>
+
+             <ul [@toggleHeight]="navigationSubPermissions.UserInterface">
+               <li *jhiHasAnyAuthority="['IWANT_ADMIN', 'ROLE_SYSTEM_ADMIN']" routerLinkActive="navigation__sub&#45;&#45;active"><a [routerLink]="['/authority']"><i class="fa fa-cube" aria-hidden="true"></i> Authority</a></li>
+               <li *jhiHasAnyAuthority="['IWANT_ADMIN', 'ROLE_SYSTEM_ADMIN']" routerLinkActive="navigation__active"><a [routerLink]="['/module-permission/view']"><i class="fa fa-key"></i> Module Permission</a></li>
+               <li *jhiHasAnyAuthority="['IWANT_ADMIN', 'ROLE_SYSTEM_ADMIN']" routerLinkActive="navigation__sub&#45;&#45;active"><a [routerLink]="['/app-permission']"><i class="fa fa-th" aria-hidden="true"></i> App-Permission</a></li>
+               &lt;!&ndash;<li *jhiHasAnyAuthority="['IWANT_ADMIN', 'MARKETPLACE_ADMIN']" routerLinkActive="navigation__sub&#45;&#45;active"><a [routerLink]="['/merchant-permission']"><i class="fa fa-briefcase" aria-hidden="true"></i> Merchant Permission</a></li>&ndash;&gt;
+               <li *jhiHasAnyAuthority="['IWANT_ADMIN', 'ROLE_SYSTEM_ADMIN']" routerLinkActive="navigation__sub&#45;&#45;active"><a [routerLink]="['/app-use-permission']"><i class="fa fa-undo" aria-hidden="true"></i> App-Use Permission</a></li>
+               <li *jhiHasAnyAuthority="['IWANT_ADMIN', 'ROLE_SYSTEM_ADMIN']" routerLinkActive="navigation__active"><a [routerLink]="['/authority-group/view']"><i class="fa fa-cubes" aria-hidden="true"></i> Authority Group</a></li>
+             </ul>
+           </li>
+
+
+
+             <li routerLinkActive="navigation__sub&#45;&#45;active" class="navigation__sub">
+                 <a angulartics2On="click"  (click)="toggleNavigationSub('E_Learning', $event)"><i class="zmdi zmdi-view-list"></i>E Learning Management<i class="zmdi zmdi-caret-down" style="float: right;"></i></a>
+                 <ul [@toggleHeight]="navigationSubState.E_Learning">
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/question-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> Question Library</a></li>
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/exam-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> Test Management</a></li>
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/certification-test']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> Certification Test</a></li>
+                 </ul>
+             </li>
+
+
+             <li routerLinkActive="navigation__sub&#45;&#45;active" class="navigation__sub">
+                 <a angulartics2On="click"  (click)="toggleNavigationSub('Customer_Relations', $event)"><i class="zmdi zmdi-view-list"></i>Customer Relations Management<i class="zmdi zmdi-caret-down" style="float: right;"></i></a>
+                 <ul [@toggleHeight]="navigationSubState.Customer_Relations">
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/customer-profiles']"  (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> Customer Profiles</a></li>
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/subscriptions-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> Subscriptions Management </a></li>
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/live-sessions']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> Live Sessions </a></li>
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/live-exam-sessions']"  (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> Live Exam Sessions</a></li>
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/exam-results']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> Exam Results</a></li>
+                 </ul>
+             </li>
+
+
+             <li routerLinkActive="navigation__sub&#45;&#45;active" class="navigation__sub">
+                 <a angulartics2On="click"  (click)="toggleNavigationSub('service', $event)"><i class="zmdi zmdi-view-list"></i> Services Management <i class="zmdi zmdi-caret-down" style="float: right;"></i></a>
+                 <ul [@toggleHeight]="navigationSubState.service">
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/concurrent-policy-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> Concurrent Policy</a></li>
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/service-policy-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> Service Policy</a></li>
+                 </ul>
+             </li>
+
+             <li routerLinkActive="navigation__sub&#45;&#45;active" class="navigation__sub">
+                 <a angulartics2On="click"  (click)="toggleNavigationSub('System_Administration', $event)"><i class="zmdi zmdi-view-list"></i> System Administration <i class="zmdi zmdi-caret-down" style="float: right;"></i></a>
+                 <ul [@toggleHeight]="navigationSubState.System_Administration">
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/authority-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> Authority Management</a></li>
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/access-groups-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> Access Groups Management</a></li>
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/staff-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> Staff Management</a></li>
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/security-configuration']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> Security Configuration</a></li>
+                 </ul>
+             </li>
+
+
+             <li routerLinkActive="navigation__sub&#45;&#45;active" class="navigation__sub">
+                 <a angulartics2On="click"  (click)="toggleNavigationSub('country_management', $event)"><i class="zmdi zmdi-view-list"></i> Basic Modules <i class="zmdi zmdi-caret-down" style="float: right;"></i></a>
+                 <ul [@toggleHeight]="navigationSubState.country_management">
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/country-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> Country Management</a></li>
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/state-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> State Management</a></li>
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/city-management']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> City Management</a></li>
+                 </ul>
+             </li>
+
+             <li routerLinkActive="navigation__sub&#45;&#45;active" class="navigation__sub">
+                 <a angulartics2On="click"  (click)="toggleNavigationSub('payment', $event)"><i class="zmdi zmdi-view-list"></i> Payment <i class="zmdi zmdi-caret-down" style="float: right;"></i></a>
+                 <ul [@toggleHeight]="navigationSubState.payment">
+                     <li routerLinkActive="navigation__active"><a [routerLink]="['/payment']" (click)="toggleSidebarVisibility()"><i class="icofont icofont-food-basket"></i> Search Payment</a></li>
+                 </ul>
+             </li>-->
+
+
+
+
+
+ </ul>
+
+  </perfect-scrollbar>
+</aside>

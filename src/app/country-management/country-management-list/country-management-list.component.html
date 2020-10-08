@@ -1,0 +1,91 @@
+<section>
+  <mat-card style="width: 100%;padding-top: 5px;">
+    <div class="row">
+
+      <div class = "col-md-8 col-lg-8 col-sm-12 col-xs-12">
+        <h3 class="card-title" style="margin-bottom: 0px;">Country Management</h3>
+        <p style="font-size: 12px;color: #666"></p>
+      </div>
+      <div class = "col-md-4 col-lg-4 col-sm-12 col-xs-12">
+
+        <!-- <div style="float: right;width: 100%">
+             <mat-form-field style="width: 75%;display: inline-block;float: left;">
+                 <input matInput placeholder="Search" name="search" >
+             </mat-form-field>
+
+             <div style="margin-top: 11px;display: inline-block;float: left;">
+                 <button  tooltip="Search" type="submit"
+                          class="btn f-l btn-success btn&#45;&#45;icon search" placement="top">
+                     <i class="zmdi zmdi-search"></i></button>
+                 <button  tooltip="Clear" class="btn btn-danger btn&#45;&#45;icon close f-l" placement="top"
+                          style="margin-left: 10px;">
+                     <i class="zmdi zmdi-close"></i>
+                 </button>
+             </div>
+         </div>-->
+
+
+      </div>
+      <div class="col-md-12">
+        <div class="tableheader" style="width: 100%;display: block;clear: both;">
+
+        </div>
+      </div>
+
+    </div>
+    <div class="row m-t-15">
+      <div class="col-md-12 col-sm-12" >
+        <div id="no-more-tables">
+          <table class="table table-hover">
+            <thead class="table_head_color">
+            <tr>
+              <th scope="col-md-3" class="text-uppercase"><b>Country</b></th>
+              <th scope="col-md-3" class="text-uppercase"><b>Status</b></th>
+              <th scope="col-md-3" class="text-uppercase text-center" style="width: 100px"><b>ACTION</b></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr *ngFor="let item of countryData">
+              <td data-title="NAME">{{item.name}}</td>
+              <mat-slide-toggle (change)="onEventList($event,item.id)" checked={{!item.blocked}}></mat-slide-toggle>
+              <td data-title="ACTION" class="text-center" style="padding-bottom: 6px;padding-top: 6px;">
+                <div class="view-btn">
+                  <span (click)="editItem(item.id)" tooltip="Edit" placement="top"><i class="fa fa-edit"></i> </span>
+                  <span (click)="deleteItem(item.id)" tooltip="Delete" placement="top"><i class="fa fa-trash" ></i> </span>
+                  <!-- <span (click)="detailItem(Item.id)" tooltip="View" placement="top"><i class="fa fa-eye" ></i> </span>-->
+                </div>
+              </td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="data-table__footer" *ngIf="totalAccessData > 0">
+         <pagination
+                 [(ngModel)]="accessGroupFilter.requestBody.page"
+                 [totalItems]="totalAccessData"
+                 [itemsPerPage]="accessGroupFilter.requestBody.pageSize"
+                 [maxSize]="10"
+                 [boundaryLinks]="true"
+                 [rotate]="false"
+                 (pageChanged)="pageChange($event)"
+         >
+         </pagination>
+     </div>-->
+  </mat-card>
+</section>
+<div class="addBtnMain">
+  <button class="btn actionBtnStyle"
+          matTooltip="New"
+          placement="top"
+          id="ItemAdd"
+          (click)="addItem();">
+    <i class="fa fa-plus"></i></button>
+</div>
+
+<div class="spinner_div" style="width: 100%" *ngIf="spinner">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>

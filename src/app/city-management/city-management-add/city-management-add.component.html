@@ -1,0 +1,66 @@
+
+<section>
+    <div class="card">
+        <h4 class="card-title f-22" style="font-weight: normal; padding:15px;">City Add</h4>
+        <div class="col-md-12" style="margin-bottom: 30px;">
+        </div>
+
+        <form class="addService" (ngSubmit)="createCity()" #addServiceForm="ngForm" >
+
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>City Name</mat-label>
+                        <input matInput placeholder="Enter City Name" name="name"
+                               [(ngModel)]="cityModel.name"
+                               required>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field class="full-width-no-margin">
+                        <mat-select name="countryname" placeholder="Enter country Name" required
+                                    [(ngModel)]="Country">
+                            <mat-option (onSelectionChange)="selectState(country.id)" id="countryName" *ngFor="let country of CountryData" [value]="country">
+                                {{country.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field class="full-width-no-margin">
+                        <mat-select name="statename" placeholder="Enter state Name" required
+                                     [(ngModel)]="State">
+                            <mat-option *ngFor="let state of StateData" [value]="state">
+                                {{state.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="saveBtnMain">
+                <button class="btn actionBtnStyle"
+                        matTooltip="Save" type="submit"
+                        placement="top"
+                        id="assetSave"
+                        [disabled]="!addServiceForm.form.valid">
+                    <i class="fa fa-check"></i></button>
+            </div>
+
+            <div class="backBtnMain">
+                <button (click)="goBack()" class="btn actionBtnStyle"
+                        matTooltip="Back" type="button"
+                        placement="top">
+                    <i class="fa fa-chevron-left"></i></button>
+            </div>
+
+        </form>
+
+    </div>
+</section>

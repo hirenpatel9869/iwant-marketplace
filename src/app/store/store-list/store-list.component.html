@@ -1,0 +1,88 @@
+<section>
+  <mat-card style="width: 100%;padding-top: 5px;">
+    <div class="row">
+
+      <div class = "col-md-2 col-lg-2 col-sm-2 col-xs-12">
+        <h3 class="card-title" style="margin-bottom: 0px;">Store List</h3>
+        <p style="font-size: 12px;color: #666"></p>
+      </div>
+      <div class = "col-md-2 col-lg-2 col-sm-2 col-xs-12">
+        <div class="multiSelect m-t-30">
+        </div>
+      </div>
+      <div class = "col-md-2 col-lg-2 col-sm-2 col-xs-12">
+        <div class="multiSelect m-t-30">
+        </div>
+      </div>
+      <div class = "col-md-2 col-lg-2 col-sm-2 col-xs-12">
+        <div class="multiSelect m-t-30">
+        </div>
+      </div>
+      <div class = "col-md-2 col-lg-2 col-sm-2 col-xs-12">
+        <div class="multiSelect m-t-30">
+        </div>
+      </div>
+      <div class = "col-md-2 col-lg-2 col-sm-2 col-xs-12">
+        <div class="multiSelect m-t-30">
+        </div>
+      </div>
+    </div>
+    <div class="row m-t-15">
+      <div class="col-md-12 col-sm-12" >
+        <div id="no-more-tables">
+          <table class="table table-hover" >
+            <thead class="table_head_color">
+            <tr>
+              <th scope="col" class="text-uppercase"><b> Business</b></th>
+              <th scope="col" class="text-uppercase"><b> Mobile</b></th>
+              <th scope="col" class="text-uppercase"><b> Email Id</b></th>
+              <th scope="col" class="text-uppercase"><b> Status </b></th>
+              <th scope="col" class="text-uppercase text-center" style="width: 100px"><b>ACTION</b></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of storeList;let i = index;">
+              <td data-title="Title">{{item.nameOfBusiness ? item.nameOfBusiness : '-'}}</td>
+              <td data-title="marksForCorrect">{{item.mobile ? item.mobile : '-'}}</td>
+              <td data-title="marksForInCorrect">{{item.emailId ? item.emailId : '-'}}</td>
+              <td data-title="status">
+                <mat-slide-toggle (change)="onEventList($event,item)" checked={{item.activate}}></mat-slide-toggle>
+              </td>
+              <td data-title="ACTION" class="text-center" style="padding-bottom: 6px;padding-top: 6px;">
+                <div class="view-btn">
+                  <span (click)="editStore(item.id)" tooltip="Edit" placement="top"><i class="fa fa-edit"></i> </span>
+                  <span (click)="deleteStore(item.id)" tooltip="Delete" placement="top"><i class="fa fa-trash" ></i> </span>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="data-table__footer" *ngIf="totalPages > 0">
+      <pagination
+        [(ngModel)]="storeListFilter.requestBody.page"
+        [totalItems]="totalPages"
+        [itemsPerPage]="storeListFilter.requestBody.pageSize"
+        [maxSize]="10"
+        [boundaryLinks]="true"
+        [rotate]="false"
+        (pageChanged)="pageChange($event)"
+      >
+      </pagination>
+    </div>
+  </mat-card>
+</section>
+<div class="addBtnMain">
+  <button class="btn actionBtnStyle"
+          matTooltip="New"
+          placement="top"
+          id="videoItemAdd"
+          (click)="addStore();">
+    <i class="fa fa-plus"></i></button>
+</div>
+
+<div class="spinner_div" style="width: 100%" *ngIf="spinner">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>

@@ -1,0 +1,113 @@
+
+<section>
+  <mat-card style="width: 100%;padding-top: 5px;">
+    <div class="row">
+
+      <div class = "col-md-8 col-lg-8 col-sm-12 col-xs-12">
+        <h3 class="card-title" style="margin-bottom: 0px;"> Customer Profiles</h3>
+        <p style="font-size: 12px;color: #666"></p>
+      </div>
+      <div class = "col-md-4 col-lg-4 col-sm-12 col-xs-12">
+
+        <div style="float: right;width: 100%">
+          <mat-form-field style="width: 75%;display: inline-block;float: left;">
+            <input matInput #search placeholder="Search" name="search" [(ngModel)]="Customeruserfilter.requestBody.keywords">
+          </mat-form-field>
+
+          <div style="margin-top: 11px;display: inline-block;float: left;">
+            <button  tooltip="Search" type="submit" (click)="searchCertificationTest()"
+                     class="btn f-l btn-success btn--icon search" placement="top">
+              <i class="zmdi zmdi-search"></i></button>
+            <button  (click)="clearCertificationTest()" tooltip="Clear" class="btn btn-danger btn--icon close f-l" placement="top"
+                     style="margin-left: 10px;">
+              <i class="zmdi zmdi-close"></i></button>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="col-md-12">
+        <div class="tableheader" style="width: 100%;display: block;clear: both;">
+
+        </div>
+      </div>
+
+    </div>
+    <div class="row m-t-15">
+      <div class="col-md-12 col-sm-12" >
+        <div id="no-more-tables">
+          <table class="table table-hover" >
+            <thead class="table_head_color">
+            <tr>
+              <th scope="col" class="text-uppercase"><b> First Name</b></th>
+              <th scope="col" class="text-uppercase"><b> Last Name</b></th>
+              <th scope="col" class="text-uppercase"><b> Mobile</b></th>
+              <th scope="col" class="text-uppercase"><b> Email</b></th>
+              <!--<th scope="col" class="text-uppercase"><b> User Type</b></th>-->
+              <th scope="col" class="text-uppercase"><b>city</b></th>
+              <th scope="col" class="text-uppercase"><b>Created on</b></th>
+              <!--<th scope="col" class="text-uppercase"><b> Description</b></th>-->
+              <th scope="col" class="text-uppercase text-center" style="width: 100px"><b>ACTION</b></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr *ngFor="let user of allUsers;">
+              <td data-title="NAME">{{user.firstName ? user.firstName : '-'}}</td>
+              <td data-title="NAME">{{user.lastName ? user.lastName : '-'}}</td>
+              <td data-title="NAME">{{user.mcc}} {{user.mobile}}</td>
+              <td data-title="NAME">{{user.email ? user.email : '-'}}</td>
+              <!--  <td data-title="NAME">
+                   <span *ngIf="user.userType === -1 " > System Admin</span>
+                   <span *ngIf="user.userType === 0 " > Customer</span>
+                   <span *ngIf="user.userType === 1 " > Staff</span>
+                   <span *ngIf="user.userType === 2 " > Merchant</span>
+                   <span *ngIf="user.userType === 3 " > Partner</span>
+                   <span *ngIf="user.userType === 4 " > Other</span>
+                </td>-->
+              <td data-title="NAME">{{(user && user.city && user.city.name) ? user.city.name : '-'}}</td>
+              <td data-title="NAME">{{((user.createdOn) ? (user.createdOn | date: 'd-M-yyyy') : '-')}}</td>
+
+              <td data-title="ACTION" class="text-center" style="padding-bottom: 6px;padding-top: 6px;">
+                <div class="view-btn">
+                  <span (click)="editCertificationTest(user.id)" tooltip="Edit" placement="top"><i class="fa fa-edit"></i> </span>
+                  <span tooltip="Delete" placement="top"><i class="fa fa-trash" ></i> </span>
+                  <!--(click)="deleteCertificationTest(user.id)"-->
+                </div>
+              </td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="data-table__footer" *ngIf="totalCustomerProfileListData > 0">
+      <pagination
+        [(ngModel)]="Customeruserfilter.requestBody.page"
+        [totalItems]="totalCustomerProfileListData"
+        [itemsPerPage]="Customeruserfilter.requestBody.pageSize"
+        [maxSize]="10"
+        [boundaryLinks]="true"
+        [rotate]="false"
+        (pageChanged)="pageChange($event)">
+      </pagination>
+    </div>
+
+  </mat-card>
+</section>
+
+<div class="addBtnMain">
+  <button class="btn actionBtnStyle"
+          matTooltip="New"
+          placement="top"
+          id="ItemAdd"
+          (click)="addItem();">
+    <i class="fa fa-plus"></i></button>
+</div>
+
+
+<div class="spinner_div" style="width: 100%" *ngIf="spinner">
+  <mat-spinner class="spinner"></mat-spinner>
+</div>

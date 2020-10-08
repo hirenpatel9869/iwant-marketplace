@@ -1,0 +1,226 @@
+<header class="header col-sm-12"  style="background-color: #707070  !important; padding: 1rem 2rem;">
+  <!--<navigation-trigger></navigation-trigger>-->
+
+  <div class="header__logo col-sm-6" style="float: left;">
+    <h1><img src="../../assets/images/ayo-blajar-white-logo.png"  alt="iWant logo" class="head_logo_img" >
+      <a style="height:50px; font-size: 24px; font-weight: normal; display: inline-block; vertical-align: middle; margin: 0 10px; cursor: pointer;"></a>
+      <p  style="display: inline-block;color: #fff;font-size: 22px;padding: 0;margin: 0;vertical-align: middle;">MarketPlace</p>
+
+    </h1>
+  </div>
+
+  <!--<div class="user col-sm-4" dropdown>
+    <div class="user__info" dropdownToggle style="padding: 3px 1rem;font-size: 1.2rem;float: right;">
+ &lt;!&ndash;     <img class="user__img" src="../../assets/images/user.png" alt="">&ndash;&gt;
+  <div class="user_image_round"> FD </div>
+
+      <div>
+        <div class="user__name" *ngIf="user">{{user.firstName?user.firstName:''}} {{user.lastName?user.lastName:''}}</div>
+        &lt;!&ndash;<div class="user__email">malinda-h@gmail.com</div>&ndash;&gt;
+      </div>
+    </div>
+    <div *dropdownMenu class="dropdown-menu dropdown-menu-right">
+     &lt;!&ndash; <a class="dropdown-item" [routerLink]="['/business-profile/view']" style="font-size: 16px; color: #444;">View Profile <i _ngcontent-c23="" class="zmdi zmdi-pin-account zmdi-hc-fw"></i></a>&ndash;&gt;
+
+      <a class="dropdown-item" href="" (click)="logout()" *jhiHasAnyAuthority="['MERCHANT_ADMIN']" style="font-size: 16px; color: #444;">Logout</a>
+      <a class="dropdown-item" (click)="logoutFromAdmin()" *jhiHasAnyAuthority="['MARKETPLACE_ADMIN']"  style="font-size: 16px; color: #444;">Logout</a>
+
+    </div>
+  </div>-->
+  <!--<header-search #search class="toggled" [class.toggled]="search.searchActive"></header-search>-->
+
+  <ul class="top-nav">
+
+
+
+    <!--<li dropdown>
+      <a dropdownToggle>
+
+        <label class="select">
+
+          <select class="language-selection" #langSelect (change)="translate.use(langSelect.value)">
+            <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">
+              {{ (lang == 'en') ? "English" : "Malay" }}
+            </option>
+          </select>
+
+        </label>
+
+
+
+      </a>
+
+    </li>-->
+
+   <!-- <li dropdown>
+      <a dropdownToggle style="text-align: right" *jhiHasAnyAuthority="['IWANT_ADMIN','ROLE_SYSTEM_ADMIN','MP_USR']">
+
+        <div class="userName">
+          <div class="user__name" *ngIf="user"> Hi, {{user.firstName?user.firstName:''}} {{user.lastName?user.lastName:''}}</div>
+
+        </div>
+
+      </a>
+
+      <div  *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown-menu&#45;&#45;block"  role="menu" style="width: 100%;">
+        <div class="listview listview&#45;&#45;hover">
+          &lt;!&ndash;<a class="dropdown-item" id = "branch" href="" (click)="logout()" *jhiHasAnyAuthority="['IWANT_ADMIN','MERCHANT_ADMIN','BRANCH_ADMIN','BR_USR','MR_USR']" style="font-size: 16px; color: #444;">Logout</a>&ndash;&gt;
+          <a class="dropdown-item" id="admin" (click)="logoutFromAdmin()" *jhiHasAnyAuthority="['ROLE_SYSTEM_ADMIN','MP_USR']"  style="font-size: 16px; color: #444;">Logout</a>
+
+        </div>
+      </div>
+    </li>-->
+
+   <!-- <li dropdown class="d-none d-sm-inline-block">
+      <a dropdownToggle><i class="zmdi zmdi-apps"></i></a>
+
+      <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown-menu&#45;&#45;block" role="menu">
+        <div class="row app-shortcuts">
+          <a class="col-4 app-shortcuts__item" href="">
+            <i class="zmdi zmdi-calendar bg-red"></i>
+            <small class="">Calendar</small>
+          </a>
+          <a class="col-4 app-shortcuts__item" href="">
+            <i class="zmdi zmdi-file-text bg-blue"></i>
+            <small class="">Files</small>
+          </a>
+          <a class="col-4 app-shortcuts__item" href="">
+            <i class="zmdi zmdi-email bg-teal"></i>
+            <small class="">Email</small>
+          </a>
+          <a class="col-4 app-shortcuts__item" href="">
+            <i class="zmdi zmdi-trending-up bg-blue-grey"></i>
+            <small class="">Reports</small>
+          </a>
+          <a class="col-4 app-shortcuts__item" href="">
+            <i class="zmdi zmdi-view-headline bg-orange"></i>
+            <small class="">News</small>
+          </a>
+          <a class="col-4 app-shortcuts__item" href="">
+            <i class="zmdi zmdi-image bg-light-green"></i>
+            <small class="">Gallery</small>
+          </a>
+        </div>
+      </div>
+    </li>
+
+    <li dropdown class="d-none d-sm-inline-block">
+      <a dropdownToggle=""><i class="zmdi zmdi-check-circle"></i></a>
+
+      <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown-menu&#45;&#45;block" role="menu">
+        <div class="listview listview&#45;&#45;hover">
+          <div class="listview__header">Tasks</div>
+
+          <a *ngFor="let task of tasksData" class="listview__item">
+            <div class="listview__content">
+              <div class="listview__heading mb-2">{{ task.name }}</div>
+
+              <div class="progress">
+                <div [ngClass]="['progress-bar bg-'+ task.color]" [ngStyle]="{ 'width': task.completed+'%' }" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </a>
+
+          <a href="" class="view-more">View All Tasks</a>
+        </div>
+      </div>
+    </li>
+
+    <li dropdown class="d-none d-sm-inline-block">
+      <a dropdownToggle=""><i class="zmdi zmdi-more-vert"></i></a>
+
+      <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown-menu&#45;&#45;icon" role="menu">
+        <div class="dropdown-item theme-switch">
+          Theme Switch
+
+          <div class="btn-group btn-group&#45;&#45;colors mt-2 d-block">
+            <label class="btn bg-green" [(ngModel)]="maThemeModel" btnRadio="green" uncheckable (click)="setTheme()"></label>
+            <label class="btn bg-blue" [(ngModel)]="maThemeModel" btnRadio="blue" uncheckable (click)="setTheme()"></label>
+            <label class="btn bg-red" [(ngModel)]="maThemeModel" btnRadio="red" uncheckable (click)="setTheme()"></label>
+            <label class="btn bg-orange" [(ngModel)]="maThemeModel" btnRadio="orange" uncheckable (click)="setTheme()"></label>
+            <label class="btn bg-teal" [(ngModel)]="maThemeModel" btnRadio="teal" uncheckable (click)="setTheme()"></label>
+
+            <br>
+
+            <label class="btn bg-cyan" [(ngModel)]="maThemeModel" btnRadio="cyan" uncheckable (click)="setTheme()"></label>
+            <label class="btn bg-blue-grey" [(ngModel)]="maThemeModel" btnRadio="blue-grey" uncheckable (click)="setTheme()"></label>
+            <label class="btn bg-purple" [(ngModel)]="maThemeModel" btnRadio="purple" uncheckable (click)="setTheme()"></label>
+            <label class="btn bg-indigo" [(ngModel)]="maThemeModel" btnRadio="indigo" uncheckable (click)="setTheme()"></label>
+            <label class="btn bg-lime" [(ngModel)]="maThemeModel" btnRadio="lime" uncheckabl (click)="setTheme()"e></label>
+          </div>
+        </div>
+        <a href="" class="dropdown-item">Fullscreen</a>
+        <a href="" class="dropdown-item">Clear Local Storage</a>
+      </div>
+    </li>-->
+  </ul>
+</header>
+
+<!--
+<div bsModal #ModalLarge="bs-modal" id="gallery" class="modal fade">
+  <h1>karan ovesh</h1>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title pull-left">Large modal</h5>
+      </div>
+      <div class="modal-body">
+        Curabitur blandit mollis lacus. Nulla sit amet est. Suspendisse nisl elit, rhoncus eget, elementum ac, condimentum eget, diam. Donec mi odio, faucibus at, scelerisque quis, convallis in, nisi. Cras sagittis.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-link">Save changes</button>
+        <button type="button" class="btn btn-link" (click)="ModalLarge.hide()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div bsModal #licenceModal="bs-modal" [config]="{backdrop: 'static', keyboard: false}" class="modal fade">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h4 class="modal-title"> Licence Expired</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            Your licence has been expired. Kindly contact <b>info@iwantunlimited.com</b> for renewal.
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        &lt;!&ndash;<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>&ndash;&gt;
+        <button type="button" class="btn btn-primary" (click)="logout()">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+&lt;!&ndash;<ul style="z-index: 999;position: fixed;bottom: 100px;right: 100px;" >
+  <li class="text" *ngFor="let item of items | async">
+    {{item | json}}
+  </li>
+</ul>&ndash;&gt;
+<div bsModal #disapproved="bs-modal" [config]="{backdrop: 'static', keyboard : false}" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="disapproved" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="display: block">
+        <h2 class="modal-title pull-left" style="color: #8b0000" *ngIf="merchant && merchant.status == 'DISAPPROVED'">{{merchant.status}}</h2>
+        <button type="button" class="btn btn-danger  pull-right" aria-label="Close" (click)="logout()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div >
+          <h4> Your application has been disapproved. You can contact on info@flashdiner.com or +91 999 999 9999. </h4>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+-->

@@ -1,0 +1,219 @@
+<section>
+  <div class="card">
+    <h4 class="card-title">Update Store</h4>
+
+    <form class="updateStore" (ngSubmit)="updateStore()" #updateStoreForm="ngForm">
+      <div class="row">
+
+        <div class="col-12">
+          <mat-accordion>
+            <mat-expansion-panel class="expansion-panel" [expanded]="pannel1">
+              <mat-expansion-panel-header  class="mat-accordion-header" [collapsedHeight]="'110px'" [expandedHeight]="'110px'">
+                <mat-panel-title>
+                  Basic Information
+                </mat-panel-title>
+                <!-- <div class="panel-sub-header">
+                   <p>Subjects, Chapters</p>
+                 </div>-->
+              </mat-expansion-panel-header>
+              <div class="row">
+
+                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                  <mat-form-field class="full-width">
+                    <mat-label>Name</mat-label>
+                    <input matInput  placeholder="Enter Name" name="name" required [(ngModel)]="updateStoreData.requestBody.nameOfBusiness">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                  <mat-form-field class="full-width">
+                    <mat-label>Contact Person Name</mat-label>
+                    <input matInput  placeholder="Enter Contact Person Name" name="contactPersonName" required [(ngModel)]="updateStoreData.requestBody.contactPersonName">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                  <mat-form-field class="full-width">
+                    <mat-label>Mobile</mat-label>
+                    <input matInput  placeholder="Enter Mobile" name="mobile" required [(ngModel)]="updateStoreData.requestBody.mobile">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                  <mat-form-field class="full-width">
+                    <mat-label>Email Id</mat-label>
+                    <input matInput  placeholder="Enter Email Id" name="email" required [(ngModel)]="updateStoreData.requestBody.emailId">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                  <mat-form-field class="full-width">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput  placeholder="Enter Description" name="description" required [(ngModel)]="updateStoreData.requestBody.description"></textarea>
+                  </mat-form-field>
+                </div>
+
+
+
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <mat-accordion>
+            <mat-expansion-panel class="expansion-panel" [expanded]="pannel2">
+              <mat-expansion-panel-header  class="mat-accordion-header" [collapsedHeight]="'110px'" [expandedHeight]="'110px'">
+                <mat-panel-title>
+                  Location
+                </mat-panel-title>
+                <!-- <div class="panel-sub-header">
+                   <p>Subjects, Chapters</p>
+                 </div>-->
+              </mat-expansion-panel-header>
+              <div class="row">
+
+
+                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                  <mat-form-field class="full-width">
+                    <mat-label>Address Line 1</mat-label>
+                    <input matInput  placeholder="Address Line 1" name="addressLine" required [(ngModel)]="updateStoreData.requestBody.address.addressLine">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                  <mat-form-field class="full-width">
+                    <mat-label>Address Line 2</mat-label>
+                    <input matInput  placeholder="Address Line 2" name="addressLine1" required [(ngModel)]="updateStoreData.requestBody.address.addressLine1">
+                  </mat-form-field>
+                </div>
+
+
+                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                  <mat-form-field class="full-width">
+                    <mat-label>Street</mat-label>
+                    <input matInput  placeholder="Street Name" name="streetName" required [(ngModel)]="updateStoreData.requestBody.address.streetName">
+                  </mat-form-field>
+                </div>
+
+
+                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                  <mat-form-field class="full-width">
+                    <mat-label>LandMark</mat-label>
+                    <input matInput  placeholder="LandMark" name="landMark" required [(ngModel)]="updateStoreData.requestBody.address.landMark">
+                  </mat-form-field>
+                </div>
+
+
+                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                  <mat-form-field class="full-width">
+                    <mat-label>pincode</mat-label>
+                    <input matInput  placeholder="pincode" name="pincode" required [(ngModel)]="updateStoreData.requestBody.address.pincode">
+                  </mat-form-field>
+                </div>
+
+
+                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                  <mat-form-field class="full-width">
+                    <mat-label>city</mat-label>
+                    <input matInput  placeholder="city" name="city" required [(ngModel)]="updateStoreData.requestBody.address.city">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                  <mat-form-field class="full-width">
+                    <mat-label>state</mat-label>
+                    <input matInput  placeholder="state" name="state" required [(ngModel)]="updateStoreData.requestBody.address.state">
+                  </mat-form-field>
+                </div>
+
+
+                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                  <mat-form-field class="full-width">
+                    <mat-label>country</mat-label>
+                    <input matInput  placeholder="country" name="country" required [(ngModel)]="updateStoreData.requestBody.address.country">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                  <mat-form-field class="full-width">
+                    <mat-label>Type of Address</mat-label>
+                    <input matInput  placeholder="Enter Type Of Address" name="addressType" required [(ngModel)]="updateStoreData.requestBody.address.addressType">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                  <mat-form-field class="full-width">
+                    <mat-label>latitude</mat-label>
+                    <input matInput  placeholder="Enter Latitude" name="latitude" required [(ngModel)]="updateStoreData.requestBody.latitude">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                  <mat-form-field class="full-width">
+                    <mat-label>longitude</mat-label>
+                    <input matInput  placeholder="Enter Longitude" name="longitude" required [(ngModel)]="updateStoreData.requestBody.longitude">
+                  </mat-form-field>
+                </div>
+
+
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <mat-accordion>
+            <mat-expansion-panel class="expansion-panel" [expanded]="pannel3">
+              <mat-expansion-panel-header  class="mat-accordion-header" [collapsedHeight]="'110px'" [expandedHeight]="'110px'">
+                <mat-panel-title>
+                  Other Information
+                </mat-panel-title>
+                <!-- <div class="panel-sub-header">
+                   <p>Subjects, Chapters</p>
+                 </div>-->
+              </mat-expansion-panel-header>
+              <div class="row">
+
+                <div class="col-12" style="margin-top: 15px"> Popular For </div>
+                <ng-container *ngFor="let item of metaInfoList;let i = index">
+                  <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                    <mat-form-field class="full-width">
+                      <mat-label>Value</mat-label>
+                      <input matInput  placeholder="Enter Value" name="Value{{i}}" required [(ngModel)]="item.value">
+                    </mat-form-field>
+                  </div>
+                  <div class="remove-object" *ngIf="metaInfoList.length > 1">
+                    <button type="button" class="btn close-btn"
+                            (click)="removeObjectFromArray(item, metaInfoList)">
+                      <i class="zmdi zmdi-close"></i>
+                    </button>
+                  </div>
+                </ng-container>
+
+
+                <div class="col-12">
+                  <button type="button" mat-raised-button color="primary" (click)="addNewObjectToArray( { value: null } , metaInfoList)"> Add  </button>
+                </div>
+
+
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+
+      </div>
+
+      <div class="saveBtnMain">
+        <button class="btn actionBtnStyle"
+                matTooltip="Save" type="submit"
+                placement="top"
+                id="assetSave"
+                [disabled]="!updateStoreForm.form.valid">
+          <i class="fa fa-check"></i></button>
+      </div>
+
+      <div class="backBtnMain">
+        <button (click)="goBack()" class="btn actionBtnStyle"
+                matTooltip="Back" type="button"
+                placement="top">
+          <i class="fa fa-chevron-left"></i></button>
+      </div>
+
+    </form>
+  </div>
+</section>
