@@ -18,10 +18,11 @@ export class CustomerProfilesUpdateComponent implements OnInit {
   public pannel2 = false;
   public isExpand = true;
   public isCollapse = false;
+  public loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
   public CustomerProfileModal = {
     actionCode: 'ACTION_UPDATE_USERPROFILE',
     requestBody: {
-      domain: 'default',
+      domain: this.loggedInUser.domain,
       id: null,
       firstName: null,
       lastName: null,

@@ -21,7 +21,7 @@ export class CountryManagementUpdateComponent implements OnInit {
   public spinner = false;
   public countryModel = {
     id: null,
-    domain: 'default',
+    domain: this.loggedInUser.domain,
     name: null,
     timezoneId: null,
     mcc: null,

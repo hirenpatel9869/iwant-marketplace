@@ -18,11 +18,12 @@ export class CustomerProfilesAddComponent implements OnInit {
   public isCollapse = false;
   public spinner = false;
   public selectedCity: any;
+  public loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
   public CustomerProfileModal = {
     actionCode: 'ACTION_CREATE_USERPROFILE',
     requestBody: {
-      domain: 'default',
+      domain: this.loggedInUser.domain,
       firstName: null,
       lastName: null,
       username: null,
@@ -65,7 +66,7 @@ export class CustomerProfilesAddComponent implements OnInit {
   public allCustomerFilter = {
     actionCode: 'ACTION_GET_USERPROFILE',
     requestBody: {
-      domain: 'default',
+      domain: this.loggedInUser.domain,
       page: 0,
       pageSize: 10,
     },
@@ -74,7 +75,7 @@ export class CustomerProfilesAddComponent implements OnInit {
   public allCityFilter = {
     actionCode: 'ACTION_GET_CITY',
     requestBody: {
-      domain: 'default',
+      domain: this.loggedInUser.domain,
       page: 0,
     },
   };

@@ -2818,7 +2818,7 @@ export class StateManagementAddComponent implements OnInit {
   ];*/
   public countryData = [];
   public stateModel = {
-    domain: 'default',
+    domain: this.loggedInUser.domain,
     name: null,
     timeZoneId: null,
     localeId: null,

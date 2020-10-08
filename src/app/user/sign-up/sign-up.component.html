@@ -1,0 +1,602 @@
+<style>
+  .w-65 {
+    width: 65% !important;
+  }
+
+  .font_size11 {
+    font-size: 1.1rem !important;
+  }
+
+  .z-depth-4 {
+    box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+    z-index: 9;
+    background: #fff;
+    border-radius: 9px;
+  }
+
+  .VYMape {
+    background: #c01d58;
+    bottom: 0;
+    direction: ltr;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 0;
+
+  }
+
+  .form-group {
+    margin-bottom: 0 !important;
+  }
+
+  .search {
+    float: right;
+    margin: 0;
+    font-size: 18px;
+  }
+
+  .close {
+    float: left;
+    margin: 0;
+    font-size: 18px;
+  }
+
+  .btn-size {
+    height: 45px;
+    width: 45px;
+  }
+
+  footer.text-center {
+    display: none
+  }
+
+  @media screen and (max-height: 900px) {
+    .g-recaptcha {
+      transform: scale(0.77);
+      -webkit-transform: scale(0.77);
+      transform-origin: 0 0;
+      -webkit-transform-origin: 0 0;
+    }
+  }
+</style>
+<div class="container">
+  <div class="row" *ngIf="showRegPage === true">
+    <div id="loginbox" style="margin: 7% auto" class="mainbox  z-depth-4 card-panel col-md-6">
+      <div class="panel panel-info">
+        <div class="text-center" style="margin-top: 30px;" *ngIf="STORE_LOGO">
+          <img src="{{STORE_LOGO}}"
+               style="height: 75px;object-fit: contain;margin-bottom: 10px;"
+               alt="store logo">
+        </div>
+        <div class="panel-heading text-center" style="padding-top:20px">
+          <span style="font-size: 1.3rem;color: #c01d58"> Register Your Restaurant with Flash Diner</span><br>
+        </div>
+
+        <div style="padding-top:20px" class="panel-body">
+
+          <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+          <form #basicForm="ngForm" style="rgba(0,0,0,0.1)">
+
+            <div class="row" style="padding: 15px; margin-bottom:10px;">
+              <div class="col-md-12">
+                <div class="row">
+
+                  <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                    <mat-radio-group name="businessType" [(ngModel)]="restaurant.businessType">
+                      <mat-radio-button class="f-16" value="SINGLE"> Single Restaurant/Outlet</mat-radio-button>
+                      <mat-radio-button class="f-16" value="MULTI_CHAIN" style="margin-left: 20px"> Multi Restaurant/Outlet
+                      </mat-radio-button>
+                    </mat-radio-group>
+
+                  </div>
+
+
+
+                  <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                    <mat-form-field class="full-width-no-margin">
+                      <mat-label>Company Name</mat-label>
+                      <input matInput autocomplete="companyName"
+                             placeholder="Enter Company Name..."
+                             name="restaurantName" autofocus
+                             [(ngModel)]="restaurant.companyName"
+                             required>
+                    </mat-form-field>
+                  </div>
+
+
+                  <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12"
+                       *ngIf="restaurant.businessType === 'SINGLE'">
+                    <mat-form-field class="full-width-no-margin">
+                      <mat-label>Restaurant Name</mat-label>
+                      <input matInput autocomplete="restaurantName" placeholder="Enter Restaurant Name..."
+                             name="restaurantName" required [(ngModel)]="restaurant.restaurantName">
+                    </mat-form-field>
+                  </div>
+
+
+
+                  <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                    <span>Person In Charge</span>
+                    <div class="row">
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <mat-form-field class="full-width-no-margin">
+                          <mat-label>First Name</mat-label>
+                          <input matInput autocomplete="firstName" placeholder="Enter First Name..." name="firstName"
+                                 required [(ngModel)]="restaurant.contactDetails.firstName">
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <mat-form-field class="full-width-no-margin">
+                          <mat-label>Last Name</mat-label>
+                          <input matInput autocomplete="lastName" placeholder="Enter Last Name..." name="lastName"
+                                  [(ngModel)]="restaurant.contactDetails.lastName">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                    <div class="row">
+                      <div class="col-md-4 col-xs-6 col-sm-6">
+                        <mat-form-field class="full-width-no-margin">
+                          <mat-select name="mobileCountryCode" placeholder="Code" required=""
+                                      [(ngModel)]="restaurant.mobileCountryCode">
+                            <mat-option *ngFor="let code of countryCode" [value]="code.dial_code">
+                              {{ code.dial_code }} {{code.code}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-8 col-xs-6 col-sm-6">
+                        <mat-form-field class="full-width-no-margin">
+                          <mat-label>Mobile Number</mat-label>
+                          <input type="number" matInput placeholder="Enter Mobile number..." autocomplete="tel"
+                                 name="phone" required [(ngModel)]="restaurant.mobileNumber">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                    <mat-form-field class="full-width-no-margin">
+                      <mat-label>Email</mat-label>
+                      <input matInput placeholder="Enter Email..." autocomplete='email' name="email" required
+                             [(ngModel)]="restaurant.email" [formControl]="email">
+                      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                    <mat-form-field class="full-width-no-margin">
+                      <mat-label>Designation</mat-label>
+                      <input matInput autocomplete="designation" placeholder="Enter Designation..." name="designation"
+                             required [(ngModel)]="restaurant.contactDetails.designation">
+                    </mat-form-field>
+
+                  </div>
+
+                  <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                    <mat-form-field class="full-width-no-margin">
+                      <mat-select name="referenceSource" placeholder="How did you get to know about FlashDiner ? "
+                                  required="" [(ngModel)]="restaurant.referenceSource">
+                        <mat-option *ngFor="let referenceSource of referenceSources" [value]="referenceSource">
+                          {{ referenceSource }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" *ngIf="restaurant.referenceSource == 'Other'">
+                    <mat-form-field class="full-width-no-margin">
+                      <mat-label>Other Reference</mat-label>
+                      <input matInput autocomplete="other" placeholder="Enter Other Reference..." name="other" required
+                             [(ngModel)]="otherReferenceSource">
+                    </mat-form-field>
+
+                  </div>
+
+                </div>
+
+
+                <button class="btn btn--icon search btn-size"
+                        tooltip="Save"
+                        placement="top"
+                        [disabled]="(!basicForm.valid || btnDisable == true || email.invalid)"
+                        (click)="addMerchant()">
+                  <i class="fa fa-check" style="font-size: 18px;"></i></button>
+                <button class="btn btn--icon close btn-size"
+                        tooltip="Return"
+                        placement="top"
+                        (click)="goBack()">
+                  <i class="fa fa-chevron-left" style="font-size: 18px;"></i>
+                </button>
+
+
+               <!-- <button class="btn btn&#45;&#45;icon close btn-size"
+                        tooltip="Return"
+                        placement="top"
+                        (click)="redirectScreen('x')">
+                  <i class="fa fa-chevron-left" style="font-size: 18px;"></i>
+                </button>-->
+
+              </div>
+
+            </div>
+
+            <!--<div *ngIf="secondStep" class="row" style="padding: 15px; margin-bottom:20px;">
+
+              <div class="col-md-12">
+                <div class="row">
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width f-16">
+                        <input matInput name="contactPersonName" placeholder="Contact PersonName"
+                               [(ngModel)]="businessRegister.contactPersonName" required>
+                      </mat-form-field>
+                      <i class="form-group__bar"></i>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width f-16">
+                        <input matInput name="designation" placeholder="Designation"
+                               [(ngModel)]="businessRegister.designation">
+                      </mat-form-field>
+                      <i class="form-group__bar"></i>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width f-16">
+                        <input matInput type="number" name="phoneNumber" placeholder="Phone Number"
+                               [(ngModel)]="businessRegister.phoneNumber">
+                      </mat-form-field>
+                      <i class="form-group__bar"></i>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width f-16">
+                        <input matInput name="email" placeholder="Email"
+                               [(ngModel)]="businessRegister.email" required>
+                      </mat-form-field>
+                      <i class="form-group__bar"></i>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width f-16">
+                        <input matInput name="website" placeholder="Website"
+                               [(ngModel)]="businessRegister.website">
+                      </mat-form-field>
+                      <i class="form-group__bar"></i>
+                    </div>
+                  </div>
+
+                </div>
+
+                <button class="btn btn&#45;&#45;icon search btn-size"
+                        tooltip="Save"
+                        placement="top"
+                        [disabled]="(!basicForm.valid)"
+                        (click)="secondStep = false;firstStep = false;thirdStep = true;fourthStep = false;">
+                  <i class="fa fa-chevron-right" style="font-size: 18px;"></i></button>
+                <button class="btn btn&#45;&#45;icon close btn-size"
+                        tooltip="Return"
+                        placement="top"
+                        (click)="secondStep = false;firstStep = true;thirdStep = false;fourthStep = false;">
+                  <i class="fa fa-chevron-left" style="font-size: 18px;"></i></button>
+              </div>
+
+            </div>
+
+            <div *ngIf="thirdStep" class="row" style="padding: 15px; margin-bottom:20px;">
+
+              <div class="col-md-12">
+                <div class="row">
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width f-16">
+                        <mat-select name="addressType" placeholder="Address Type" [(ngModel)]="businessRegister.addressType" required>
+                          <mat-option *ngFor="let type of addresstypes" [value]="type.value">
+                            {{ type.viewValue }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <i class="form-group__bar"></i>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width f-16">
+                        <input matInput name="addressTitle" placeholder="Address Title"
+                               [(ngModel)]="businessRegister.addressTitle">
+                      </mat-form-field>
+                      <i class="form-group__bar"></i>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width f-16">
+                        <input matInput name="flatNameNo" placeholder="Flat Name/No"
+                               [(ngModel)]="businessRegister.flatNameNo" required>
+                      </mat-form-field>
+                      <i class="form-group__bar"></i>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width f-16">
+                        <input matInput name="streetName" placeholder="Street Name"
+                               [(ngModel)]="businessRegister.streetName">
+                      </mat-form-field>
+                      <i class="form-group__bar"></i>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width f-16">
+                        <input matInput name="landMark" placeholder="LandMark"
+                               [(ngModel)]="businessRegister.landMark">
+                      </mat-form-field>
+                      <i class="form-group__bar"></i>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width f-16">
+                        <mat-select name="countryName" placeholder="Country Name" [(ngModel)]="businessRegister.countryName"
+                                    (selectionChange)="getStateByCountryId($event)">
+                          <mat-option *ngFor="let country of countries" [value]="country.id">
+                            {{ country.name }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <i class="form-group__bar"></i>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width f-16">
+                        <mat-select name="stateName" placeholder="State Name" [(ngModel)]="businessRegister.stateName"
+                                    (selectionChange)="getCityByStateId($event)">
+                          <mat-option *ngFor="let state of states" [value]="state.id">
+                            {{ state.name }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <i class="form-group__bar"></i>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width f-16">
+                        <mat-select name="cityName" placeholder="City Name" [(ngModel)]="businessRegister.cityName">
+                          <mat-option *ngFor="let city of cities" [value]="city.id">
+                            {{ city.name }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <i class="form-group__bar"></i>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width f-16">
+                        <input matInput name="pincode" placeholder="Pincode"
+                               [(ngModel)]="businessRegister.pincode" required>
+                      </mat-form-field>
+                      <i class="form-group__bar"></i>
+                    </div>
+                  </div>
+
+                </div>
+
+                <button class="btn btn&#45;&#45;icon search btn-size"
+                        tooltip="Save"
+                        placement="top"
+                        [disabled]="(!basicForm.valid)"
+                        (click)="secondStep = false;firstStep = false;thirdStep = false;fourthStep = true;">
+                  <i class="fa fa-chevron-right" style="font-size: 18px;"></i></button>
+                <button class="btn btn&#45;&#45;icon close btn-size"
+                        tooltip="Return"
+                        placement="top"
+                        (click)="secondStep = true;firstStep = false;thirdStep = false;fourthStep = false;">
+                  <i class="fa fa-chevron-left" style="font-size: 18px;"></i></button>
+              </div>
+
+            </div>
+
+            <div *ngIf="fourthStep" class="row" style="padding: 15px; margin-bottom:20px;">
+
+              <div class="col-md-12">
+                <div class="row">
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width f-16">
+                        <input matInput name="gstNo" placeholder="GST No"
+                               [(ngModel)]="businessRegister.gstNo" required>
+                      </mat-form-field>
+                      <i class="form-group__bar"></i>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width f-16">
+                        <input matInput name="gstTinNo" placeholder="GST Tin No"
+                               [(ngModel)]="businessRegister.gstTinNo">
+                      </mat-form-field>
+                      <i class="form-group__bar"></i>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width f-16">
+                        <input matInput name="cstTinNo" placeholder="CST Tin No"
+                               [(ngModel)]="businessRegister.cstTinNo">
+                      </mat-form-field>
+                      <i class="form-group__bar"></i>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width f-16">
+                        <input matInput name="panNumber" placeholder="PAN Number"
+                               [(ngModel)]="businessRegister.panNumber" required>
+                      </mat-form-field>
+                      <i class="form-group__bar"></i>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width f-16">
+                        <input matInput name="domainUrl" class="w-65" placeholder="Domain URL"
+                               [(ngModel)]="domain" required><span style="float: right;">{{url}}</span>
+                      </mat-form-field>
+                      <i class="form-group__bar"></i>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <mat-form-field class="example-full-width f-16">
+                        <input matInput name="activationKey" placeholder="Have activation key?" (keyup)="Dashedkey($event)"
+                               [(ngModel)]="activationKey">
+                      </mat-form-field>
+                      <p class="help-block text-right" style="font-size: 13px;color: #ff0000">
+                        <span>* 14-Day Trial will be activated if no key is provided.</span>
+                        <span style="display: block;color: #ff0000; float: left;" *ngIf="isExpireKey">(Please enter valid key)</span>
+                      </p>
+                      <i class="form-group__bar"></i>
+                    </div>
+                  </div>
+
+                </div>
+
+                <button class="btn btn&#45;&#45;icon search btn-size"
+                        tooltip="Save"
+                        placement="top"
+                        [disabled]="(!basicForm.valid || btnDisable == true )"
+                        (click)="secondStep = false;firstStep = false;thirdStep = false;register()">
+                  <i class="fa fa-chevron-right" style="font-size: 18px;"></i></button>
+                <button class="btn btn&#45;&#45;icon close btn-size"
+                        tooltip="Return"
+                        placement="top"
+                        (click)="secondStep = false;firstStep = false;thirdStep = true;fourthStep = false;">
+                  <i class="fa fa-chevron-left" style="font-size: 18px;"></i></button>
+              </div>
+
+              <div *ngIf="isLoader == true" style="position:fixed;top: 0;bottom: 0;left:0;right: 0;background-color:#EBEBEB;display:flex;
+justify-content:center;align-items:center;z-index: 4;">
+                <div style="text-align: center">
+    <span>
+      <div class="google-loader"></div>
+      <div class="google-loader"></div>
+      <div class="google-loader"></div>
+      <div class="google-loader"></div>
+    </span>
+                </div>
+              </div>
+            </div>-->
+          </form>
+
+        </div>
+      </div>
+      <div  class="spinner_div" style="width: 100%" *ngIf="spinner">
+        <mat-spinner class="spinner" ></mat-spinner>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 thank" *ngIf="showRegPage === false" style="margin-top: 10%">
+    <!--<div id="thankScreen" style="margin: 7% auto" class="mainbox  z-depth-4 card-panel col-md-6">
+      <div class="panel panel-info" >
+        <div style="padding-top:20px;" class="panel-body" >
+          <div class="panel-heading">
+          <div class="text-center">
+            <h2 style="color: #c01d58;margin-bottom: 20px">Activation email sent successfully.</h2>
+          </div>
+        </div>
+          <div style="margin-left: -5px">
+            <img src="../../../assets/images/Webp.net-gifmaker.gif"
+                 alt="store logo">
+          </div>
+
+          <div>
+            <h4 style="color: #c01d58;margin: 15px 0px 15px 0px;">Thanks for registering with us. Please activate your account from registered email address.</h4>
+          </div>
+        </div>
+      </div>
+    </div>-->
+    <div>
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="text-align: center">
+
+        <img src="../../../assets/images/circle_logo.png"
+             style="height: 250px;width: 250px; object-fit: contain;margin-bottom: 10px;"
+             alt="store logo">
+
+      </div>
+    </div>
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 textchange">
+      <h1 class="text-center">Thank You!</h1><br>
+    </div>
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+      <h3 class="text-center">Thanks for registering with us. Please activate your account from registered email
+        address.</h3>
+    </div>
+
+
+  </div>
+
+
+  <div class="row" style="bottom: 60px;">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4 text-center" style="z-index: 1; visibility: hidden">
+      <img style="padding-top: 30px;height: 100px;width: 50px;margin-top: 130px"
+           src="../../../assets/images/main-logo.png"/>
+      <p style="font-size: 16px; color: #006d34; margin-bottom: 0px;">Powered By</p>
+      <h2 style="font-size: 18px; color: #006d34;">iWant Technologies Pvt. Ltd.</h2>
+    </div>
+    <div class="col-md-4">
+    </div>
+  </div>
+
+
+</div>
+
+
+<div>
+  <toaster-container [toasterconfig]="config1"></toaster-container>
+</div>
+<div *ngIf="showRegPage === true" class="VYMape">
+
+</div>
+<!--
+<div class="VYMape" aria-hidden="true"><svg jsname="BUfzDd" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 810" preserveAspectRatio="xMinYMin slice" aria-hidden="true"><path fill="#dbdbdb" d="M592.66 0c-15 64.092-30.7 125.285-46.598 183.777C634.056 325.56 748.348 550.932 819.642 809.5h419.672C1184.518 593.727 1083.124 290.064 902.637 0H592.66z"></path><path fill="#efefee" d="M545.962 183.777c-53.796 196.576-111.592 361.156-163.49 490.74 11.7 44.494 22.8 89.49 33.1 134.883h404.07c-71.294-258.468-185.586-483.84-273.68-625.623z"></path><path fill="#dbdbdb" d="M153.89 0c74.094 180.678 161.088 417.448 228.483 674.517C449.67 506.337 527.063 279.465 592.56 0H153.89z"></path><path fill="#efefee" d="M153.89 0H0v809.5h415.57C345.477 500.938 240.884 211.874 153.89 0z"></path><path fill="#efefee" d="M1144.22 501.538c52.596-134.583 101.492-290.964 134.09-463.343 1.2-6.1 2.3-12.298 3.4-18.497 0-.2.1-.4.1-.6 1.1-6.3 2.3-12.7 3.4-19.098H902.536c105.293 169.28 183.688 343.158 241.684 501.638v-.1z"></path><path fill="#efefee" d="M1285.31 0c-2.2 12.798-4.5 25.597-6.9 38.195C1321.507 86.39 1379.603 158.98 1440 257.168V0h-154.69z"></path><path fill="#dbdbdb" d="M1278.31,38.196C1245.81,209.874 1197.22,365.556 1144.82,499.838L1144.82,503.638C1185.82,615.924 1216.41,720.211 1239.11,809.6L1439.7,810L1439.7,256.768C1379.4,158.78 1321.41,86.288 1278.31,38.195L1278.31,38.196z"></path></svg></div>-->
+

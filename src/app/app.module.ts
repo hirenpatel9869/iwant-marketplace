@@ -41,6 +41,7 @@ import {CountryManagementModule} from './country-management/country-management.m
 import {CountryManagementComponent} from './country-management/country-management.component';
 import {AgmCoreModule} from '@agm/core';
 import {environment} from '../environments/environment';
+import {UserModule} from './user/user.module';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
 };
@@ -73,6 +74,7 @@ export function tokenGetter() {
     PerfectScrollbarModule,
     StoreModule,
     CustomerProfilesModule,
+    UserModule,
     CityManagementModule,
     CountryManagementModule,
     StateManagementModule,

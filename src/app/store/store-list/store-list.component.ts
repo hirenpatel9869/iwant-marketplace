@@ -13,10 +13,11 @@ import {StoreService} from '../store.service';
 })
 export class StoreListComponent implements OnInit {
   public storeList: any;
+  public loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
   public storeListFilter = {
     actionCode: 'ACTION_FILTER_STORE',
     requestBody: {
-      domain: 'default',
+      domain: this.loggedInUser.domain,
       nameOfBusiness: null,
       city: null,
       popularFor: [],
@@ -70,7 +71,7 @@ export class StoreListComponent implements OnInit {
       imageUrl: null,
       startDate: null,
       finishDate: null,
-      domain: 'default',
+      domain: this.loggedInUser.domain,
     },
   };
   constructor(private router: Router,

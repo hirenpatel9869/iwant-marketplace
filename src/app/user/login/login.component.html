@@ -1,0 +1,374 @@
+<style>
+  .font_size11 {
+    font-size: 1.1rem !important;
+  }
+  .z-depth-4 {
+    box-shadow: 0 16px 28px 0 rgba(0,0,0,0.22), 0 25px 55px 0 rgba(0,0,0,0.21);
+    z-index: 9;
+    background:#fff;
+    border-radius: 9px;
+  }
+  .VYMape {
+    background: #c01d58;
+    bottom: 0;
+    direction: ltr;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+
+  }
+  .custom-control-input:checked ~ .custom-control-indicator {
+    border-color: #c01d58;
+  }
+  .custom-checkbox .custom-control-indicator:before{
+    background-color: #c01d58;
+  }
+  .form-group .clr{
+    font-size: 18px !important;
+    color: #c01d58;
+  }
+  .form-control{
+    font-size: 16px !important;
+  }
+  footer.text-center{display: none}
+  @media screen and (max-height: 900px){  .g-recaptcha {transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;} }
+  @media screen and (max-width: 1024px) and (min-width: 320px) {
+    .bg-res{
+      height: 100%;
+    }
+  }
+</style>
+<div class="container" style="height: 100vh;position: relative">
+  <div class="row justify-content-center align-items-center" style="height: 100% !important;">
+    <div class="col-md-4"></div>
+    <div id="loginbox"  class="mainbox  card-panel col-md-4">
+      <div class="panel panel-info" style="border-radius: 9px;
+box-shadow: 0 16px 28px 0 rgba(0,0,0,0.22), 0 25px 55px 0 rgba(0,0,0,0.21);
+-moz-box-shadow: 0 16px 28px 0 rgba(0,0,0,0.22), 0 25px 55px 0 rgba(0,0,0,0.21);
+-webkit-box-shadow: 0 16px 28px 0 rgba(0,0,0,0.22), 0 25px 55px 0 rgba(0,0,0,0.21);
+background: #fff;" >
+        <div class="text-center" style="margin-top: 18px;">
+         <span style="display: inline-block;padding: 5px;border-radius: 10px;">
+            <img  src="../../../assets/images/ayo_blajar_color_logo.png"
+                  style="height: 120px;object-fit: contain;margin-bottom: 10px;"
+                  alt="store logo">
+         </span>
+
+
+        </div>
+        <!--<div class="panel-heading text-center" >
+          <span style="font-size: 1.3rem; color: #c01d58; font-weight: 600;"> Flash Diner</span><br>
+        </div>-->
+
+        <div style="padding-top:30px;" class="panel-body"  >
+
+          <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+          <form id="loginForm" class="form-horizontal" role="form" #loginForm="ngForm"
+                (ngSubmit)="login()"
+                novalidate>
+
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label class="clr"> <i class="zmdi zmdi-account" style="font-size: 18px !important; color: #c01d58;"></i>&nbsp;&nbsp;User Name</label>
+                  <input type="text" name="username"  class="form-control is-valid" autofocus
+                         [(ngModel)]="userName" placeholder="Mobile-Number Or Email-Id">
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
+
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label class="clr"><i class="zmdi zmdi-lock-open" style="font-size: 18px !important; color: #c01d58;"></i>&nbsp;&nbsp;Password</label>
+                  <input name="password" type="password" class="form-control is-valid"
+                         [(ngModel)]="password" placeholder="Password">
+                  <i class="form-group__bar"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-xs-12 text-center">
+              <!-- <div class="row">
+                 <div class="col-md-12 text-center">
+                   <div class="text-success" style="display: inline-block;font-size: 16px;font-weight: 700;cursor: pointer; color: #c01d58 !important;"
+                        (click)="redirectReg()"> Register Your Restaurant </div>
+                 </div>
+               </div>-->
+
+            </div>
+            <!--<div class="row">
+              <div class="col-md-12 text-center" style="margin-top: 10px;">
+                <a routerLink="/activate-business" class="text-success" (click)="redirectActivateBusiness()" style="color: #888 !important; text-decoration: underline;"> Already have Activation Key ? </a>
+              </div>
+            </div>-->
+
+            <div class="row">
+              <div class="col-md-12 text-center" style="margin-top: 10px;">
+                <a   (click)="Changepassword.show()"  class="text-success"  style="color: #222 !important; text-decoration: underline;"> Forgot Password ? </a>
+              </div>
+            </div>
+
+            <div style="margin-top:10px" class="form-group text-center">
+              <!-- Button -->
+              <div class="col-sm-12 controls">
+                <button style="margin-top: 10px;"  class="btn btn--icon search" [disabled]="!loginForm.form.valid"><i style="margin-left: 3px;" class="fa fa-chevron-right"></i></button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+
+  <!--<div class="row" style="    position: absolute;
+    width: 100%;
+    bottom: 60px;">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-4 text-center">
+    <img style="padding-top: 30px;height: 90px;width: 50px" src="../../../assets/images/main-logo.png"/>
+      <p style="font-size: 16px; color: #ffffff; margin-bottom: 0px;">Powered By</p>
+      <h2 style="font-size: 18px; color: #ffffff;">iWant Technologies Pvt. Ltd.</h2>
+    </div>
+    <div class="col-md-4">
+
+    </div>
+  </div>-->
+  <!--<div style="width: 100%;float: left;position: absolute;bottom: 10px;text-align: center">
+    <img style="padding-top: 30px;" src="../../../assets/images/main-logo.png"/>
+    <p style="font-size: 16px; color: #ffffff; margin-bottom: 0px;">Powered By</p>
+    <h2 style="font-size: 18px; color: #ffffff;">iWant Technologies Pvt. Ltd.</h2>
+  </div>-->
+</div>
+
+<div>
+  <toaster-container [toasterconfig]="config1"></toaster-container>
+</div>
+
+<div  class="spinner_div" style="width: 100%" *ngIf="spinner">
+  <mat-spinner class="spinner" ></mat-spinner>
+</div>
+
+<div class="VYMape" aria-hidden="true"><svg jsname="BUfzDd" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 810" preserveAspectRatio="xMinYMin slice" aria-hidden="true"><path fill="#dbdbdb" d="M592.66 0c-15 64.092-30.7 125.285-46.598 183.777C634.056 325.56 748.348 550.932 819.642 809.5h419.672C1184.518 593.727 1083.124 290.064 902.637 0H592.66z"></path><path fill="#efefee" d="M545.962 183.777c-53.796 196.576-111.592 361.156-163.49 490.74 11.7 44.494 22.8 89.49 33.1 134.883h404.07c-71.294-258.468-185.586-483.84-273.68-625.623z"></path><path fill="#dbdbdb" d="M153.89 0c74.094 180.678 161.088 417.448 228.483 674.517C449.67 506.337 527.063 279.465 592.56 0H153.89z"></path><path fill="#efefee" d="M153.89 0H0v809.5h415.57C345.477 500.938 240.884 211.874 153.89 0z"></path><path fill="#efefee" d="M1144.22 501.538c52.596-134.583 101.492-290.964 134.09-463.343 1.2-6.1 2.3-12.298 3.4-18.497 0-.2.1-.4.1-.6 1.1-6.3 2.3-12.7 3.4-19.098H902.536c105.293 169.28 183.688 343.158 241.684 501.638v-.1z"></path><path fill="#efefee" d="M1285.31 0c-2.2 12.798-4.5 25.597-6.9 38.195C1321.507 86.39 1379.603 158.98 1440 257.168V0h-154.69z"></path><path fill="#dbdbdb" d="M1278.31,38.196C1245.81,209.874 1197.22,365.556 1144.82,499.838L1144.82,503.638C1185.82,615.924 1216.41,720.211 1239.11,809.6L1439.7,810L1439.7,256.768C1379.4,158.78 1321.41,86.288 1278.31,38.195L1278.31,38.196z"></path></svg></div>
+<div bsModal #Changepassword="bs-modal" class="modal fade" [config]="{backdrop: 'static'}">
+  <div class="modal-dialog modal-lg" style="width: 100%;">
+    <div class="modal-content">
+      <div class="row m-0 bgm-blue p-10">
+        <h3 class="c-white p-l-10 m-t-10 ng-binding">Forgot Your Password ?</h3>
+        <button type="button" class="btn btn-danger waves-effect"
+                style="position: absolute;top:15px;right: 15px;box-shadow: none;" (click)="hideChangePasswordModel();">
+          <i class="zmdi zmdi-close"></i>
+        </button>
+      </div>
+
+      <form class="c-form-login" #otpForm="ngForm">
+        <div class="modal-body">
+
+
+
+
+
+          <div class="text-center" style="margin-bottom: 5px;margin-top:20px;">
+
+            <div class="row">
+              <div class="col-md-3 col-xs-4 col-sm-3">
+                <mat-form-field class="full-width-no-margin">
+                  <mat-select name="companymobileCountryCode" placeholder="CODE" required [(ngModel)]="mobileCountryCode">
+                    <mat-option *ngFor="let code of countryCode" [value]="code.dial_code">
+                      {{ code.dial_code }} {{code.code}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-9 col-xs-8 col-sm-9">
+                <mat-form-field class="full-width-no-margin">
+                  <mat-label>Mobile Number</mat-label>
+                  <input type="text" (keypress)="OnlyNumbers($event)"
+                         matInput placeholder="Enter mobile number..." autocomplete="companyphone" name="companyphone" required  #mobile="ngModel" [(ngModel)]="mobileNumber">
+                  <mat-error [hidden]="(mobile.valid || mobile.pristine) && !mobile.hasError('pattern')">
+                    Please enter a valid Mobile Number
+                  </mat-error>
+
+                </mat-form-field>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-xs-12 col-sm-12 text-center">
+                <button *ngIf="mobileNumber" type="Continue" class="btn btn-float search"
+                        (click)="resendOtp();">Send OTP</button>
+              </div>
+              <div class="col-md-12 col-xs-12 col-sm-12">
+                <div id = "forgetpass" style="display:none;margin-top: 54px;">
+                  <div class="form-group has-feedback" *ngIf="mobileNumber">
+                    <input type="text"
+                           name="otp"
+                           (keypress)="OnlyNumbers($event)"
+                           [(ngModel)]="otpCode"
+                           minlength="6"
+                           maxlength="6"
+                           #otpNumber="ngModel"
+                           [disabled]="!mobileNumber"
+                           autocomplete="off"
+                           class="form-control c-square c-theme input-lg text-center"
+                           placeholder="Enter OTP Code" required>
+
+                    <div class="text-danger" style="font-size: 14px !important; color: #c01d58;" [hidden]="!otpNumber.hasError('minlength')">OTP should be  6 digit</div>
+
+                  </div>
+                  <div *ngIf="mobileNumber && otpCode">
+                    <div class="form-group has-feedback" >
+                      <input type="password"
+                             name="password"
+                             [(ngModel)]="password"
+                             [disabled]="!mobileNumber || !otpCode"
+                             autocomplete="off"
+                             class="form-control c-square c-theme input-lg text-center"
+                             placeholder="Enter new password" required>
+
+                    </div>
+                    <div class="form-group has-feedback">
+                      <input type="password" class="form-control c-square c-theme input-lg text-center"
+                             name="confirmPassword"
+                             placeholder="Confirm password"
+                             [(ngModel)]="confirmPassword1"
+                             required validateEqual="password"
+                             reverse="false" #confirmPassword="ngModel">
+
+                    </div>
+                    <div [hidden]="confirmPassword.valid || (confirmPassword.pristine)" class="text-danger" style="font-size: 16px !important; color: #c01d58;    margin-top: -20px;
+    display: block;">
+                      Password mismatch
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+
+
+
+        </div>
+        <div class="modal-footer" *ngIf="mobileNumber && password && otpCode">
+          <button type="submit" class="btn btn-float search btn--icon" style="position: absolute;bottom: 15px;right: 15px;"
+                  [disabled]="!otpForm.form.valid || !mobileNumber || !password || !otpCode"
+                  (click)="changePassword()"><i class="fa fa-check"></i></button>
+
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--<div class="VYMape" aria-hidden="true"><svg jsname="BUfzDd" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 810" preserveAspectRatio="xMinYMin slice" aria-hidden="true"><path fill="#dbdbdb" d="M592.66 0c-15 64.092-30.7 125.285-46.598 183.777C634.056 325.56 748.348 550.932 819.642 809.5h419.672C1184.518 593.727 1083.124 290.064 902.637 0H592.66z"></path><path fill="#efefee" d="M545.962 183.777c-53.796 196.576-111.592 361.156-163.49 490.74 11.7 44.494 22.8 89.49 33.1 134.883h404.07c-71.294-258.468-185.586-483.84-273.68-625.623z"></path><path fill="#dbdbdb" d="M153.89 0c74.094 180.678 161.088 417.448 228.483 674.517C449.67 506.337 527.063 279.465 592.56 0H153.89z"></path><path fill="#efefee" d="M153.89 0H0v809.5h415.57C345.477 500.938 240.884 211.874 153.89 0z"></path><path fill="#efefee" d="M1144.22 501.538c52.596-134.583 101.492-290.964 134.09-463.343 1.2-6.1 2.3-12.298 3.4-18.497 0-.2.1-.4.1-.6 1.1-6.3 2.3-12.7 3.4-19.098H902.536c105.293 169.28 183.688 343.158 241.684 501.638v-.1z"></path><path fill="#efefee" d="M1285.31 0c-2.2 12.798-4.5 25.597-6.9 38.195C1321.507 86.39 1379.603 158.98 1440 257.168V0h-154.69z"></path><path fill="#dbdbdb" d="M1278.31,38.196C1245.81,209.874 1197.22,365.556 1144.82,499.838L1144.82,503.638C1185.82,615.924 1216.41,720.211 1239.11,809.6L1439.7,810L1439.7,256.768C1379.4,158.78 1321.41,86.288 1278.31,38.195L1278.31,38.196z"></path></svg></div>-->
+<div class="VYMape" aria-hidden="true"><img class="bg-res" style="width: 100%" src="../../../assets/images/login-bg-1.png"/> </div>
+
+
+<div bsModal #acceptTerms="bs-modal" class="modal fade">
+  <div class="modal-dialog modal-lg" style="width: 100%;">
+    <div class="modal-content">
+      <div class="row m-0 bgm-blue p-10">
+        <h3 class="c-white p-l-10 m-t-10 ng-binding">General Terms and Conditions</h3>
+        <button type="button" class="btn btn-danger waves-effect"
+                style="position: absolute;top:15px;right: 15px;box-shadow: none;" (click)="acceptTerms.hide();">
+          <i class="zmdi zmdi-close"></i>
+        </button>
+      </div>
+
+
+      <div class="modal-body">
+
+        <div class="col-md-12 col-xs-12 col-sm-12">
+          <div style="height: 350px;width: 100%;overflow-y: auto;">
+
+            <ol style="margin: 0px;padding: 0px;">
+              <li>
+                <h6>1. Definition</h6>
+
+                <p> <b> “Apps” </b> shall have the meaning ascribed to it in Clause 2. <br>
+
+                  <b> “Flash Diner” </b> means an internet-based content and e-commerce portal wherein various restaurants are listed by any subscribing Merchant for the purpose to promote their restaurants to the Users (as defined below) who wishes to visit such restaurants.<br>
+
+                  <b> “Information” </b> shall have the meaning ascribed to it in Clause 3.4.<br>
+
+                  <b> “Merchant”</b> means the owner or authorized representative of the Restaurant.<br>
+
+                  <b>“Products” </b> shall have the meaning ascribed to it in Clause 3.3.<br>
+
+                  <b>“Restaurant”</b> means subscribing Merchant’s restaurant.<br>
+
+                  <b>“User”</b> means any person who access or avail Apps for the purpose of buying, viewing, displaying the Products that are listed on the Apps.
+                </p>
+
+              </li>
+              <li>
+                <h6>2. Terms of Use  </h6>
+                <p>These terms and conditions (“T&C”) govern your use of Flash Diner’s platform including the  Mobile App Flash Diner and the use of Flash Diner website: www.flashdiner.com (collectively “Apps”) which are owned and/or operated by Ecom Indoasia Pte. Ltd. and PT AN Consultant.</p>
+              </li>
+              <li>
+                <h6>3. Agreement </h6>
+                <ol>
+                  <li>Each time you use the Apps, you reaffirm your acceptance of the then-current T&C. If you do not wish to be bound by these T&C, please discontinue using the Apps. </li>
+                  <li>Flash Diner may amend these T&C in its sole discretion and at any time. Upon the amended T&C posted on the Apps, the User shall be deemed agree to it by continuing using the Apps.</li>
+                  <li>Flash Diner through the Apps gives the Merchant opportunity to offer their products, offers, promotions, information and menu (“Products”) of their Restaurant to the User. Flash Diner acts as an intermediary. The agreement on the order of the Products is exclusively made between the Merchant and the User. </li>
+                  <li>The Merchant shall make all necessary information available on the Apps with the details including company name, location, telephone number(s), email address, opening hours, menu card(s), packages, allergy information and all Products information that must be stated in accordance with laws and regulations (“Information”). Any discrepancies between the information provided and reality are entirely under the responsibility of the Merchant.</li>
+                  <li>The Merchant shall ensure that the Information provided is true, complete and non-misleading and does not infringe third party rights. Any changes to the Information as abovementioned shall be notified to Flash Diner through an email.</li>
+                  <li>The Merchant acknowledges and agrees that it has listed the Restaurant on the Apps only for the purpose of promoting the Restaurant to the User. The Restaurant listing on the Apps and the Restaurant itself shall not be in violation of any applicable law or regulation.</li>
+                </ol>
+              </li>
+              <li>
+                <h6>4. Orders </h6>
+                <p> Any orders made by the User will be automatically sent to the Merchant through the Apps. The Merchant acknowledges and agrees that the Apps is only a platform to allow the Merchant to offer the Products to the User and that Flash Diner does not have a role to play in the actual and effective success of any transaction/proposed transaction that the Merchant enters into with the User.</p>
+              </li>
+              <li>
+                <h6>5. Limitation of Liability </h6>
+                <p>It is hereby agreed between the Parties that in no event shall Flash Diner be liable under any theory of liability, whether in an equitable, legal, or common law action arising hereunder for contract, strict liability, indemnity, product liability, tort (including negligence), or otherwise, for any special, incidental, indirect, exemplary, punitive, or consequential damages of any kind and however caused by the Merchant and User use of the Apps or arising in relation to the Restaurant including, but not limited to, business interruption or loss of profits, business opportunities, or goodwill arising hereunder or out of the Restaurant even if notified of the possibility of such damage.</p>
+              </li>
+              <li>
+                <h6>6. Termination </h6>
+                <p>Immediately after termination of the Restaurant Listing Agreement, Flash Diner shall reserve the rights to remove the relevant Merchant’s Restaurant Information on the Apps.</p>
+              </li>
+              <li>
+                <h6>7. Prohibition</h6>
+                <ol>
+                  <li>The Merchant and User shall not use the Apps in any manner that causes, or may cause, damage to the Apps or impairment of the availability or accessibility of the Apps. </li>
+                  <li>The Merchant and User shall not use the Apps in any manner which is unlawful, illegal, fraudulent or harmful, or in connection with any unlawful, illegal, fraudulent or harmful purpose or activity. </li>
+                </ol>
+              </li>
+              <li>
+                <h6>8. Access</h6>
+                <p>The Merchant shall grant Flash Diner the access at any time and without prior notice to allow Flash Diner to see if the Merchant complies with the T&C and Restaurant Listing Agreement.</p>
+              </li>
+              <li>
+                <h6>9. Governing Law</h6>
+                <p>This T&C shall be governed by and interpreted in accordance with the laws of the Republic of Indonesia.</p>
+              </li>
+
+            </ol>
+          </div>
+
+        </div>
+
+
+
+
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-success" (click)="AcceptTerms()">Accept & Continue</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+

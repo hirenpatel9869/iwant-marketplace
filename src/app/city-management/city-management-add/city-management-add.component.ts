@@ -18,7 +18,7 @@ export class CityManagementAddComponent implements OnInit {
     public spinner = false;
 
     public cityModel = {
-        domain : 'default',
+        domain : this.loggedInUser.domain,
         name: null,
         countryId: null,
         countryName: null,

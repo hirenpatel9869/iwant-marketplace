@@ -19,7 +19,7 @@ export class StateManagementListComponent implements OnInit {
     public countryData: any;
     public stateData: any;
     public statePojo = {
-        domain : 'default',
+        domain : this.loggedInUser.domain,
         keyword : null,
         sort: null,
         page : 0,

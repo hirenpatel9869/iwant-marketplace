@@ -17,7 +17,7 @@ import {StateManagementService} from '../../state-management/state-management.se
 export class CityManagementListComponent implements OnInit {
     public loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
     public cityPojo = {
-          domain : 'default',
+          domain : this.loggedInUser.domain,
           keyword : null,
           page : 0,
           sortBy: null,
@@ -32,7 +32,7 @@ export class CityManagementListComponent implements OnInit {
 
     public totalAccessData: any;
     public statePojo = {
-        domain : 'default',
+        domain : this.loggedInUser.domain,
         keyword : null,
         countryId : null,
         page : 0,

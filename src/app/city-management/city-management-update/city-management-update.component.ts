@@ -20,7 +20,7 @@ export class CityManagementUpdateComponent implements OnInit {
 
     public cityModel = {
         id: null,
-        domain : 'default',
+        domain : this.loggedInUser.domain,
         name: null,
         countryId: null,
         countryName: null,

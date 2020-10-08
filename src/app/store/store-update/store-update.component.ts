@@ -12,6 +12,7 @@ import {StoreService} from '../store.service';
   styleUrls: ['./store-update.component.scss'],
 })
 export class StoreUpdateComponent implements OnInit {
+  public loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
   public metaInfoList = [{value: null}];
   public pannel1 = false;
   public pannel2 = false;
@@ -58,7 +59,7 @@ export class StoreUpdateComponent implements OnInit {
       imageUrl: null,
       startDate: null,
       finishDate: null,
-      domain: 'default',
+      domain: this.loggedInUser.domain,
     },
   };
   public spinner = false;

@@ -16,7 +16,7 @@ export class CustomerProfilesListComponent implements OnInit {
   /* Customeruserfilter = {
    actionCode: 'ACTION_GET_USER',
    requestBody: {
-     domain: 'default',
+     domain: this.loggedInUser.domain,
      keywords: null,
      page: 0,
      pageSize: 10

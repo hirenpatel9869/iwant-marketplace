@@ -10,6 +10,7 @@ import {StoreService} from '../store.service';
   styleUrls: ['./store-add.component.scss'],
 })
 export class StoreAddComponent implements OnInit {
+  public loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
   public metaInfoList = [{value: null}];
   public zoom: number;
   public pannel1 = false;
@@ -57,7 +58,7 @@ export class StoreAddComponent implements OnInit {
       imageUrl: null,
       startDate: null,
       finishDate: null,
-      domain: 'default',
+      domain: this.loggedInUser.domain,
     },
   };
   public spinner = false;

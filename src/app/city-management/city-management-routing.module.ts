@@ -4,6 +4,8 @@ import {CityManagementUpdateComponent} from './city-management-update/city-manag
 import {CityManagementComponent} from './city-management.component';
 import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
+import {AuthGuard} from '../auth/auth';
+import {LicenceAuth} from '../auth/licenceAuth';
 
 const routes: Routes = [
   {
@@ -11,7 +13,7 @@ const routes: Routes = [
     data: {
       // authorities: ['IWANT_ADMIN', 'MARKETPLACE_ADMIN', 'MST_AMN_MN_AD']
     },
-   // canActivate: [AuthGuard, LicenceAuth],
+   canActivate: [AuthGuard, LicenceAuth],
     component: CityManagementComponent,
     children: [
       {

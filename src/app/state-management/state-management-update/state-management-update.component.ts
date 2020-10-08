@@ -20,7 +20,7 @@ export class StateManagementUpdateComponent implements OnInit {
   public countryData = [];
   public stateModel = {
      id : null,
-    domain: 'default',
+    domain: this.loggedInUser.domain,
     name: null,
     timeZoneId: null,
     localeId: null,
@@ -52,7 +52,7 @@ export class StateManagementUpdateComponent implements OnInit {
         .subscribe((res) => {
           this.stateModel = {
             id: res.id,
-            domain: 'default',
+            domain: this.loggedInUser.domain,
             name: res.name,
             timeZoneId: res.timeZoneId,
             localeId: res.localeId,

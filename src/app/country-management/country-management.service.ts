@@ -18,7 +18,7 @@ export class CountryManagementService {
   //       .pipe(tap(_res => this.log(`find country successfully`)));  }
 
    public getAll(): Observable<any> {
-     return this.http.get(this.constantService.userService + '/system/country/findAll/' + 'default')
+     return this.http.get(this.constantService.userService + '/system/country/findAll/' + this.loggedInUser.domain)
          .pipe(tap((_res) => this.log(`find country successfully`)));  }
 
   public create(data): Observable<any> {

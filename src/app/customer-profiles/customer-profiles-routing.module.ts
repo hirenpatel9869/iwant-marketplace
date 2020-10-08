@@ -14,7 +14,7 @@ const routes: Routes = [
     data: {
       // authorities: ['IWANT_ADMIN', 'MARKETPLACE_ADMIN', 'MST_AMN_MN_AD']
     },
-    //canActivate: [AuthGuard, LicenceAuth],
+    canActivate: [AuthGuard, LicenceAuth],
     component: CustomerProfilesComponent,
     children: [
       {

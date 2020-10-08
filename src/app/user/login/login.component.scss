@@ -1,0 +1,122 @@
+.tocenter {
+  margin:-11% auto;
+}
+.m-b-10 {
+  margin-bottom: 10px !important;
+}
+md-input-container.md-block {
+  margin-bottom: 0;
+}
+.bgm-blue {
+  background-color: #c01d58 !important;
+}
+.c-white {
+  color: #ffffff !important;
+}
+.p-l-10 {
+  padding-left: 10px !important;
+}
+.m-t-10 {
+  margin-top: 10px !important;
+}
+h3, .h3 {
+  font-size: 23px;
+}
+.p-10 {
+  padding: 10px !important;
+}
+.m-0 {
+  margin: 0px !important;
+}
+.red{
+  color: red;
+}
+.c-red {
+  color: #F44336 !important;
+}
+.c-green {
+  color: #4CAF50 !important;
+}
+.folder-media-main {
+  width: 100%;
+  float: left;
+  position: relative;
+  transition: 0.3s all;
+  margin-bottom: 20px;
+}
+.folder-media {
+  width: 100%;
+  float: left;
+  box-shadow: 0px 2px 8px #ccc;
+  -webkit-box-shadow: 0px 2px 8px #ccc;
+  border-radius: 3px;
+  background: #fff;
+}
+
+.upload-thumb.folder-img {
+  width: 25%;
+  float: left;
+}
+.folder-name {
+  width: 75%;
+  float: left;
+  text-align: left;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.text-yellow {
+  color: #FFB848!important;
+}
+
+.text-azure {
+  color: #CD332D !important;
+}
+
+.no-margin {
+  margin: 0!important;
+}
+.upload-thumb {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: contain;
+}
+
+.folder-action-button{
+  width: 100%;
+  float: left;
+  padding: 0px;
+  position: absolute;
+  right: 0px;
+  display: none;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+}
+.folder-overlay{
+  background: #ffffff;
+}
+
+.media-buttons{
+  display: inline-block;
+  margin: 6px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #5b5b60 !important;
+  position: relative;
+  outline: 0px;
+}
+/* For space between sidebar and main section */
+section{
+  margin-left: 0rem;
+}

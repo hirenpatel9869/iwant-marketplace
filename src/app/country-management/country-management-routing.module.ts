@@ -4,6 +4,8 @@ import {CountryManagementAddComponent} from './country-management-add/country-ma
 import {CountryManagementListComponent} from './country-management-list/country-management-list.component';
 import {CountryManagementUpdateComponent} from './country-management-update/country-management-update.component';
 import {CountryManagementComponent} from './country-management.component';
+import {AuthGuard} from '../auth/auth';
+import {LicenceAuth} from '../auth/licenceAuth';
 
 const routes: Routes = [
   {
@@ -11,7 +13,7 @@ const routes: Routes = [
     data: {
       // authorities: ['IWANT_ADMIN', 'MARKETPLACE_ADMIN', 'MST_AMN_MN_AD']
     },
-    //canActivate: [AuthGuard, LicenceAuth],
+    canActivate: [AuthGuard, LicenceAuth],
     component: CountryManagementComponent,
     children: [
       {

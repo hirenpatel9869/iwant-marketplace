@@ -10,6 +10,7 @@ import {StoreService} from '../store.service';
   styleUrls: ['./store-view.component.scss'],
 })
 export class StoreViewComponent implements OnInit {
+  public loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
   public storeData = {
     nameOfBusiness: 'mall',
     contactPersonName: 'test1',
@@ -50,7 +51,7 @@ promoCode: 'ddddddd',
   imageUrl: 'eeeeeeeeeeeeeeee',
   startDate: '2020-09-01T18:30:00.000Z',
   finishDate: '2020-09-30T18:30:00.000Z',
-  domain: 'default',
+  domain: this.loggedInUser.domain,
 };
   public storeId = null;
   public spinner = false;

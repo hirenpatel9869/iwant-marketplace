@@ -15,7 +15,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 export class CountryManagementAddComponent implements OnInit {
   public loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
   public countryModel = {
-    domain: 'default',
+    domain: this.loggedInUser.domain,
     name: null,
     timezoneId: null,
     mcc: null,

@@ -23,7 +23,7 @@ import {StorageService} from '../utilityservices/storage.service';
 })
 
 export class NavigationComponent implements OnInit {
-
+  public sidebarVisible: boolean;
   constructor(private sharedService: SharedService,
               public storage: StorageService,
     ) {
@@ -32,7 +32,7 @@ export class NavigationComponent implements OnInit {
         });
     }
 
-    public sidebarVisible: boolean;
+
     // Sub menu visibilities
     public navigationSubState: any = {
         AssetManagement : 'active',
